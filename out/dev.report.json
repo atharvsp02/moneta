@@ -1,0 +1,78 @@
+{
+  "run_id": "run_d15eb8f4c3a9",
+  "dataset": "dev",
+  "match_rate": {
+    "records_matched": 115,
+    "records_total": 124,
+    "match_rate_records": 0.9274,
+    "value_matched": "₹428,539.23",
+    "value_total": "₹457,722.91",
+    "match_rate_value": 0.9362
+  },
+  "throughput": {
+    "deterministic_runtime_ms": 0.73,
+    "records_per_second": 170484.5,
+    "agent_runtime_ms": 0,
+    "agent_cases": 0
+  },
+  "exceptions": {
+    "total": 16,
+    "closed_by_rules": 9,
+    "investigated_by_agent": 0,
+    "breakdown": [
+      {
+        "category": "DUPLICATE_BOOKING",
+        "count": 2,
+        "value_paise": 1793008,
+        "value": "₹17,930.08",
+        "resolved_by": "rules"
+      },
+      {
+        "category": "AMOUNT_MISMATCH",
+        "count": 3,
+        "value_paise": 774000,
+        "value": "₹7,740.00",
+        "resolved_by": "rules"
+      },
+      {
+        "category": "MISSING_IN_BOOKS",
+        "count": 2,
+        "value_paise": 257624,
+        "value": "₹2,576.24",
+        "resolved_by": "rules"
+      },
+      {
+        "category": "MISSING_REFUND_IN_BOOKS",
+        "count": 2,
+        "value_paise": 78301,
+        "value": "₹783.01",
+        "resolved_by": "rules"
+      }
+    ]
+  },
+  "timing_differences": {
+    "unsettled_records": 11,
+    "unsettled_value": "₹22,491.26",
+    "note": "Payments captured but not yet settled at the T+2 cutoff. Expected, not an exception."
+  },
+  "clearing_account": {
+    "actual": "₹39,337.76",
+    "explained_by_timing": "₹20,317.15",
+    "unexplained": "₹19,020.61",
+    "unexplained_paise": 1902061
+  },
+  "could_not_resolve": [],
+  "not_investigated": [
+    "821495625535",
+    "079593718587",
+    "079593718587",
+    "594996572458",
+    "291244498513"
+  ],
+  "agent_ran": false,
+  "agent_error": null,
+  "agent_tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
