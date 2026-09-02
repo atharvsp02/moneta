@@ -1,0 +1,446 @@
+voucher_id,voucher_type,voucher_date,narration,order_id,settlement_utr,account,debit,credit
+SV-0001,sales,2026-08-03,Online sale via Razorpay UPI / order_WEdgjuWa8mRVtL,order_WEdgjuWa8mRVtL,,Razorpay Clearing,482807,0
+SV-0001,sales,2026-08-03,Online sale via Razorpay UPI / order_WEdgjuWa8mRVtL,order_WEdgjuWa8mRVtL,,Sales,0,409158
+SV-0001,sales,2026-08-03,Online sale via Razorpay UPI / order_WEdgjuWa8mRVtL,order_WEdgjuWa8mRVtL,,GST Output Tax,0,73649
+SV-0002,sales,2026-08-03,Online sale via Razorpay UPI / order_jSbbciSPOcSeVc,order_jSbbciSPOcSeVc,,Razorpay Clearing,1220755,0
+SV-0002,sales,2026-08-03,Online sale via Razorpay UPI / order_jSbbciSPOcSeVc,order_jSbbciSPOcSeVc,,Sales,0,1034538
+SV-0002,sales,2026-08-03,Online sale via Razorpay UPI / order_jSbbciSPOcSeVc,order_jSbbciSPOcSeVc,,GST Output Tax,0,186217
+SV-0003,sales,2026-08-03,Online sale via Razorpay CARD / order_wCZ7Uw9xfogoEm,order_wCZ7Uw9xfogoEm,,Razorpay Clearing,98629,0
+SV-0003,sales,2026-08-03,Online sale via Razorpay CARD / order_wCZ7Uw9xfogoEm,order_wCZ7Uw9xfogoEm,,Sales,0,83584
+SV-0003,sales,2026-08-03,Online sale via Razorpay CARD / order_wCZ7Uw9xfogoEm,order_wCZ7Uw9xfogoEm,,GST Output Tax,0,15045
+SV-0004,sales,2026-08-03,Online sale via Razorpay CARD / order_z1gLaQbmlFXJKr,order_z1gLaQbmlFXJKr,,Razorpay Clearing,562664,0
+SV-0004,sales,2026-08-03,Online sale via Razorpay CARD / order_z1gLaQbmlFXJKr,order_z1gLaQbmlFXJKr,,Sales,0,476834
+SV-0004,sales,2026-08-03,Online sale via Razorpay CARD / order_z1gLaQbmlFXJKr,order_z1gLaQbmlFXJKr,,GST Output Tax,0,85830
+SV-0005,sales,2026-08-04,Online sale via Razorpay NETBANKING / order_NrOIZ7cNgqhHaB,order_NrOIZ7cNgqhHaB,,Razorpay Clearing,563068,0
+SV-0005,sales,2026-08-04,Online sale via Razorpay NETBANKING / order_NrOIZ7cNgqhHaB,order_NrOIZ7cNgqhHaB,,Sales,0,477176
+SV-0005,sales,2026-08-04,Online sale via Razorpay NETBANKING / order_NrOIZ7cNgqhHaB,order_NrOIZ7cNgqhHaB,,GST Output Tax,0,85892
+SV-0006,sales,2026-08-04,Online sale via Razorpay CARD / order_sMpSscDlkrCaqx,order_sMpSscDlkrCaqx,,Razorpay Clearing,85723,0
+SV-0006,sales,2026-08-04,Online sale via Razorpay CARD / order_sMpSscDlkrCaqx,order_sMpSscDlkrCaqx,,Sales,0,72647
+SV-0006,sales,2026-08-04,Online sale via Razorpay CARD / order_sMpSscDlkrCaqx,order_sMpSscDlkrCaqx,,GST Output Tax,0,13076
+SV-0007,sales,2026-08-04,Online sale via Razorpay UPI / order_jIhKtJ0RlgLKOm,order_jIhKtJ0RlgLKOm,,Razorpay Clearing,1121297,0
+SV-0007,sales,2026-08-04,Online sale via Razorpay UPI / order_jIhKtJ0RlgLKOm,order_jIhKtJ0RlgLKOm,,Sales,0,950252
+SV-0007,sales,2026-08-04,Online sale via Razorpay UPI / order_jIhKtJ0RlgLKOm,order_jIhKtJ0RlgLKOm,,GST Output Tax,0,171045
+SV-0008,sales,2026-08-04,Online sale via Razorpay NETBANKING / order_Kjr2ZZJRX6FwIf,order_Kjr2ZZJRX6FwIf,,Razorpay Clearing,540242,0
+SV-0008,sales,2026-08-04,Online sale via Razorpay NETBANKING / order_Kjr2ZZJRX6FwIf,order_Kjr2ZZJRX6FwIf,,Sales,0,457832
+SV-0008,sales,2026-08-04,Online sale via Razorpay NETBANKING / order_Kjr2ZZJRX6FwIf,order_Kjr2ZZJRX6FwIf,,GST Output Tax,0,82410
+SV-0009,sales,2026-08-04,Online sale via Razorpay WALLET / order_E2sNVbYAbBHXgw,order_E2sNVbYAbBHXgw,,Razorpay Clearing,420904,0
+SV-0009,sales,2026-08-04,Online sale via Razorpay WALLET / order_E2sNVbYAbBHXgw,order_E2sNVbYAbBHXgw,,Sales,0,356698
+SV-0009,sales,2026-08-04,Online sale via Razorpay WALLET / order_E2sNVbYAbBHXgw,order_E2sNVbYAbBHXgw,,GST Output Tax,0,64206
+RV-0001,receipt,2026-08-05,Razorpay settlement 471257795428,,471257795428,Bank,2349248,0
+RV-0001,receipt,2026-08-05,Razorpay settlement 471257795428,,471257795428,Payment Gateway Charges,13226,0
+RV-0001,receipt,2026-08-05,Razorpay settlement 471257795428,,471257795428,GST Input Credit,2381,0
+RV-0001,receipt,2026-08-05,Razorpay settlement 471257795428,,471257795428,Razorpay Clearing,0,2364855
+SV-0010,sales,2026-08-05,Online sale via Razorpay CARD / order_ymDswpBcrQbvZj,order_ymDswpBcrQbvZj,,Razorpay Clearing,1596914,0
+SV-0010,sales,2026-08-05,Online sale via Razorpay CARD / order_ymDswpBcrQbvZj,order_ymDswpBcrQbvZj,,Sales,0,1353317
+SV-0010,sales,2026-08-05,Online sale via Razorpay CARD / order_ymDswpBcrQbvZj,order_ymDswpBcrQbvZj,,GST Output Tax,0,243597
+SV-0011,sales,2026-08-05,Online sale via Razorpay UPI / order_1LlqsajAIxNKu8,order_1LlqsajAIxNKu8,,Razorpay Clearing,155428,0
+SV-0011,sales,2026-08-05,Online sale via Razorpay UPI / order_1LlqsajAIxNKu8,order_1LlqsajAIxNKu8,,Sales,0,131719
+SV-0011,sales,2026-08-05,Online sale via Razorpay UPI / order_1LlqsajAIxNKu8,order_1LlqsajAIxNKu8,,GST Output Tax,0,23709
+SV-0012,sales,2026-08-05,Online sale via Razorpay CARD / order_Atz4TFbY3pflkw,order_Atz4TFbY3pflkw,,Razorpay Clearing,413169,0
+SV-0012,sales,2026-08-05,Online sale via Razorpay CARD / order_Atz4TFbY3pflkw,order_Atz4TFbY3pflkw,,Sales,0,350143
+SV-0012,sales,2026-08-05,Online sale via Razorpay CARD / order_Atz4TFbY3pflkw,order_Atz4TFbY3pflkw,,GST Output Tax,0,63026
+SV-0013,sales,2026-08-05,Online sale via Razorpay CARD / order_Ao0iEFJdED5jSF,order_Ao0iEFJdED5jSF,,Razorpay Clearing,35307,0
+SV-0013,sales,2026-08-05,Online sale via Razorpay CARD / order_Ao0iEFJdED5jSF,order_Ao0iEFJdED5jSF,,Sales,0,29921
+SV-0013,sales,2026-08-05,Online sale via Razorpay CARD / order_Ao0iEFJdED5jSF,order_Ao0iEFJdED5jSF,,GST Output Tax,0,5386
+SV-0014,sales,2026-08-05,Online sale via Razorpay NETBANKING / order_Ouwgz7z54VfB4P,order_Ouwgz7z54VfB4P,,Razorpay Clearing,504120,0
+SV-0014,sales,2026-08-05,Online sale via Razorpay NETBANKING / order_Ouwgz7z54VfB4P,order_Ouwgz7z54VfB4P,,Sales,0,427220
+SV-0014,sales,2026-08-05,Online sale via Razorpay NETBANKING / order_Ouwgz7z54VfB4P,order_Ouwgz7z54VfB4P,,GST Output Tax,0,76900
+SV-0015,sales,2026-08-05,Online sale via Razorpay UPI / order_PJ7Kj4m9AFzCXN,order_PJ7Kj4m9AFzCXN,,Razorpay Clearing,85068,0
+SV-0015,sales,2026-08-05,Online sale via Razorpay UPI / order_PJ7Kj4m9AFzCXN,order_PJ7Kj4m9AFzCXN,,Sales,0,72092
+SV-0015,sales,2026-08-05,Online sale via Razorpay UPI / order_PJ7Kj4m9AFzCXN,order_PJ7Kj4m9AFzCXN,,GST Output Tax,0,12976
+SV-0016,sales,2026-08-05,Online sale via Razorpay CARD / order_fquKoPf96QGzlC,order_fquKoPf96QGzlC,,Razorpay Clearing,1871477,0
+SV-0016,sales,2026-08-05,Online sale via Razorpay CARD / order_fquKoPf96QGzlC,order_fquKoPf96QGzlC,,Sales,0,1585997
+SV-0016,sales,2026-08-05,Online sale via Razorpay CARD / order_fquKoPf96QGzlC,order_fquKoPf96QGzlC,,GST Output Tax,0,285480
+SV-0017,sales,2026-08-05,Online sale via Razorpay NETBANKING / order_y1CwVWgHo9RV7j,order_y1CwVWgHo9RV7j,,Razorpay Clearing,27968,0
+SV-0017,sales,2026-08-05,Online sale via Razorpay NETBANKING / order_y1CwVWgHo9RV7j,order_y1CwVWgHo9RV7j,,Sales,0,23702
+SV-0017,sales,2026-08-05,Online sale via Razorpay NETBANKING / order_y1CwVWgHo9RV7j,order_y1CwVWgHo9RV7j,,GST Output Tax,0,4266
+RV-0002,receipt,2026-08-06,Razorpay settlement 767385051494,,767385051494,Bank,2693240,0
+RV-0002,receipt,2026-08-06,Razorpay settlement 767385051494,,767385051494,Payment Gateway Charges,32198,0
+RV-0002,receipt,2026-08-06,Razorpay settlement 767385051494,,767385051494,GST Input Credit,5796,0
+RV-0002,receipt,2026-08-06,Razorpay settlement 767385051494,,767385051494,Razorpay Clearing,0,2731234
+SV-0018,sales,2026-08-06,Online sale via Razorpay UPI / order_0DNBZZdPaRXLuj,order_0DNBZZdPaRXLuj,,Razorpay Clearing,87877,0
+SV-0018,sales,2026-08-06,Online sale via Razorpay UPI / order_0DNBZZdPaRXLuj,order_0DNBZZdPaRXLuj,,Sales,0,74472
+SV-0018,sales,2026-08-06,Online sale via Razorpay UPI / order_0DNBZZdPaRXLuj,order_0DNBZZdPaRXLuj,,GST Output Tax,0,13405
+SV-0019,sales,2026-08-06,Online sale via Razorpay WALLET / order_ZxqyxKjxvWfCol,order_ZxqyxKjxvWfCol,,Razorpay Clearing,327415,0
+SV-0019,sales,2026-08-06,Online sale via Razorpay WALLET / order_ZxqyxKjxvWfCol,order_ZxqyxKjxvWfCol,,Sales,0,277470
+SV-0019,sales,2026-08-06,Online sale via Razorpay WALLET / order_ZxqyxKjxvWfCol,order_ZxqyxKjxvWfCol,,GST Output Tax,0,49945
+SV-0020,sales,2026-08-06,Online sale via Razorpay CARD / order_XWybQTKjtayTfS,order_XWybQTKjtayTfS,,Razorpay Clearing,271684,0
+SV-0020,sales,2026-08-06,Online sale via Razorpay CARD / order_XWybQTKjtayTfS,order_XWybQTKjtayTfS,,Sales,0,230241
+SV-0020,sales,2026-08-06,Online sale via Razorpay CARD / order_XWybQTKjtayTfS,order_XWybQTKjtayTfS,,GST Output Tax,0,41443
+RV-0003,receipt,2026-08-07,Razorpay settlement 821495625535,,821495625535,Bank,4584457,0
+RV-0003,receipt,2026-08-07,Razorpay settlement 821495625535,,821495625535,Payment Gateway Charges,82065,0
+RV-0003,receipt,2026-08-07,Razorpay settlement 821495625535,,821495625535,GST Input Credit,14772,0
+RV-0003,receipt,2026-08-07,Razorpay settlement 821495625535,,821495625535,Razorpay Clearing,0,4681294
+SV-0021,sales,2026-08-07,Online sale via Razorpay UPI / order_Q74q69dTcada4P,order_Q74q69dTcada4P,,Razorpay Clearing,374144,0
+SV-0021,sales,2026-08-07,Online sale via Razorpay UPI / order_Q74q69dTcada4P,order_Q74q69dTcada4P,,Sales,0,317071
+SV-0021,sales,2026-08-07,Online sale via Razorpay UPI / order_Q74q69dTcada4P,order_Q74q69dTcada4P,,GST Output Tax,0,57073
+SV-0022,sales,2026-08-07,Online sale via Razorpay NETBANKING / order_ZJqlIkXOpIqp9d,order_ZJqlIkXOpIqp9d,,Razorpay Clearing,111326,0
+SV-0022,sales,2026-08-07,Online sale via Razorpay NETBANKING / order_ZJqlIkXOpIqp9d,order_ZJqlIkXOpIqp9d,,Sales,0,94344
+SV-0022,sales,2026-08-07,Online sale via Razorpay NETBANKING / order_ZJqlIkXOpIqp9d,order_ZJqlIkXOpIqp9d,,GST Output Tax,0,16982
+SV-0023,sales,2026-08-07,Online sale via Razorpay CARD / order_cwLuHj31CQJVuk,order_cwLuHj31CQJVuk,,Razorpay Clearing,422407,0
+SV-0023,sales,2026-08-07,Online sale via Razorpay CARD / order_cwLuHj31CQJVuk,order_cwLuHj31CQJVuk,,Sales,0,357972
+SV-0023,sales,2026-08-07,Online sale via Razorpay CARD / order_cwLuHj31CQJVuk,order_cwLuHj31CQJVuk,,GST Output Tax,0,64435
+SV-0024,sales,2026-08-07,Online sale via Razorpay CARD / order_0b8OySAM1MHcz8,order_0b8OySAM1MHcz8,,Razorpay Clearing,223945,0
+SV-0024,sales,2026-08-07,Online sale via Razorpay CARD / order_0b8OySAM1MHcz8,order_0b8OySAM1MHcz8,,Sales,0,189784
+SV-0024,sales,2026-08-07,Online sale via Razorpay CARD / order_0b8OySAM1MHcz8,order_0b8OySAM1MHcz8,,GST Output Tax,0,34161
+CN-0001,credit_note,2026-08-08,Refund against order_wCZ7Uw9xfogoEm,order_wCZ7Uw9xfogoEm,,Sales Return,43489,0
+CN-0001,credit_note,2026-08-08,Refund against order_wCZ7Uw9xfogoEm,order_wCZ7Uw9xfogoEm,,GST Output Tax,7828,0
+CN-0001,credit_note,2026-08-08,Refund against order_wCZ7Uw9xfogoEm,order_wCZ7Uw9xfogoEm,,Razorpay Clearing,0,51317
+RV-0004,receipt,2026-08-08,Razorpay settlement 603767249912,,603767249912,Bank,672837,0
+RV-0004,receipt,2026-08-08,Razorpay settlement 603767249912,,603767249912,Payment Gateway Charges,11982,0
+RV-0004,receipt,2026-08-08,Razorpay settlement 603767249912,,603767249912,GST Input Credit,2157,0
+RV-0004,receipt,2026-08-08,Razorpay settlement 603767249912,,603767249912,Razorpay Clearing,0,686976
+SV-0025,sales,2026-08-08,Online sale via Razorpay CARD / order_7G4AOkHs0GnG5m,order_7G4AOkHs0GnG5m,,Razorpay Clearing,64570,0
+SV-0025,sales,2026-08-08,Online sale via Razorpay CARD / order_7G4AOkHs0GnG5m,order_7G4AOkHs0GnG5m,,Sales,0,54720
+SV-0025,sales,2026-08-08,Online sale via Razorpay CARD / order_7G4AOkHs0GnG5m,order_7G4AOkHs0GnG5m,,GST Output Tax,0,9850
+SV-0026,sales,2026-08-08,Online sale via Razorpay CARD / order_ZKm4bV3AyAVHny,order_ZKm4bV3AyAVHny,,Razorpay Clearing,67817,0
+SV-0026,sales,2026-08-08,Online sale via Razorpay CARD / order_ZKm4bV3AyAVHny,order_ZKm4bV3AyAVHny,,Sales,0,57472
+SV-0026,sales,2026-08-08,Online sale via Razorpay CARD / order_ZKm4bV3AyAVHny,order_ZKm4bV3AyAVHny,,GST Output Tax,0,10345
+RV-0005,receipt,2026-08-09,Razorpay settlement 500986241086,,500986241086,Bank,1113940,0
+RV-0005,receipt,2026-08-09,Razorpay settlement 500986241086,,500986241086,Payment Gateway Charges,15154,0
+RV-0005,receipt,2026-08-09,Razorpay settlement 500986241086,,500986241086,GST Input Credit,2728,0
+RV-0005,receipt,2026-08-09,Razorpay settlement 500986241086,,500986241086,Razorpay Clearing,0,1131822
+SV-0028,sales,2026-08-09,Online sale via Razorpay UPI / order_CB9t2039bicBTW,order_CB9t2039bicBTW,,Razorpay Clearing,17908,0
+SV-0028,sales,2026-08-09,Online sale via Razorpay UPI / order_CB9t2039bicBTW,order_CB9t2039bicBTW,,Sales,0,15176
+SV-0028,sales,2026-08-09,Online sale via Razorpay UPI / order_CB9t2039bicBTW,order_CB9t2039bicBTW,,GST Output Tax,0,2732
+SV-0029,sales,2026-08-09,Online sale via Razorpay UPI / order_WLuqIA1id6Vw5D,order_WLuqIA1id6Vw5D,,Razorpay Clearing,85101,0
+SV-0029,sales,2026-08-09,Online sale via Razorpay UPI / order_WLuqIA1id6Vw5D,order_WLuqIA1id6Vw5D,,Sales,0,72119
+SV-0029,sales,2026-08-09,Online sale via Razorpay UPI / order_WLuqIA1id6Vw5D,order_WLuqIA1id6Vw5D,,GST Output Tax,0,12982
+SV-0030,sales,2026-08-09,Online sale via Razorpay UPI / order_HpSCgw3gTlcrhD,order_HpSCgw3gTlcrhD,,Razorpay Clearing,409417,0
+SV-0030,sales,2026-08-09,Online sale via Razorpay UPI / order_HpSCgw3gTlcrhD,order_HpSCgw3gTlcrhD,,Sales,0,346964
+SV-0030,sales,2026-08-09,Online sale via Razorpay UPI / order_HpSCgw3gTlcrhD,order_HpSCgw3gTlcrhD,,GST Output Tax,0,62453
+SV-0031,sales,2026-08-09,Online sale via Razorpay NETBANKING / order_qW4sg8NFNl5oFA,order_qW4sg8NFNl5oFA,,Razorpay Clearing,80411,0
+SV-0031,sales,2026-08-09,Online sale via Razorpay NETBANKING / order_qW4sg8NFNl5oFA,order_qW4sg8NFNl5oFA,,Sales,0,68145
+SV-0031,sales,2026-08-09,Online sale via Razorpay NETBANKING / order_qW4sg8NFNl5oFA,order_qW4sg8NFNl5oFA,,GST Output Tax,0,12266
+RV-0006,receipt,2026-08-10,Razorpay settlement 079593718587,,079593718587,Bank,197794,0
+RV-0006,receipt,2026-08-10,Razorpay settlement 079593718587,,079593718587,Payment Gateway Charges,2647,0
+RV-0006,receipt,2026-08-10,Razorpay settlement 079593718587,,079593718587,GST Input Credit,474,0
+RV-0006,receipt,2026-08-10,Razorpay settlement 079593718587,,079593718587,Razorpay Clearing,0,200915
+SV-0032,sales,2026-08-10,Online sale via Razorpay CARD / order_wSti4TjLKpvO0h,order_wSti4TjLKpvO0h,,Razorpay Clearing,141653,0
+SV-0032,sales,2026-08-10,Online sale via Razorpay CARD / order_wSti4TjLKpvO0h,order_wSti4TjLKpvO0h,,Sales,0,120045
+SV-0032,sales,2026-08-10,Online sale via Razorpay CARD / order_wSti4TjLKpvO0h,order_wSti4TjLKpvO0h,,GST Output Tax,0,21608
+SV-0033,sales,2026-08-10,Online sale via Razorpay WALLET / order_6mZck71oe7N3x4,order_6mZck71oe7N3x4,,Razorpay Clearing,1442217,0
+SV-0033,sales,2026-08-10,Online sale via Razorpay WALLET / order_6mZck71oe7N3x4,order_6mZck71oe7N3x4,,Sales,0,1222218
+SV-0033,sales,2026-08-10,Online sale via Razorpay WALLET / order_6mZck71oe7N3x4,order_6mZck71oe7N3x4,,GST Output Tax,0,219999
+SV-0034,sales,2026-08-10,Online sale via Razorpay UPI / order_O9Lnt8EGno2CRi,order_O9Lnt8EGno2CRi,,Razorpay Clearing,72610,0
+SV-0034,sales,2026-08-10,Online sale via Razorpay UPI / order_O9Lnt8EGno2CRi,order_O9Lnt8EGno2CRi,,Sales,0,61534
+SV-0034,sales,2026-08-10,Online sale via Razorpay UPI / order_O9Lnt8EGno2CRi,order_O9Lnt8EGno2CRi,,GST Output Tax,0,11076
+SV-0035,sales,2026-08-10,Online sale via Razorpay CARD / order_7J58m1CiAhzCue,order_7J58m1CiAhzCue,,Razorpay Clearing,2270057,0
+SV-0035,sales,2026-08-10,Online sale via Razorpay CARD / order_7J58m1CiAhzCue,order_7J58m1CiAhzCue,,Sales,0,1923777
+SV-0035,sales,2026-08-10,Online sale via Razorpay CARD / order_7J58m1CiAhzCue,order_7J58m1CiAhzCue,,GST Output Tax,0,346280
+RV-0007,receipt,2026-08-11,Razorpay settlement 594996572458,,594996572458,Bank,644940,0
+RV-0007,receipt,2026-08-11,Razorpay settlement 594996572458,,594996572458,Payment Gateway Charges,1608,0
+RV-0007,receipt,2026-08-11,Razorpay settlement 594996572458,,594996572458,GST Input Credit,289,0
+RV-0007,receipt,2026-08-11,Razorpay settlement 594996572458,,594996572458,Razorpay Clearing,0,646837
+SV-0036,sales,2026-08-11,Online sale via Razorpay CARD / order_a0uARxlNtencYF,order_a0uARxlNtencYF,,Razorpay Clearing,241549,0
+SV-0036,sales,2026-08-11,Online sale via Razorpay CARD / order_a0uARxlNtencYF,order_a0uARxlNtencYF,,Sales,0,204703
+SV-0036,sales,2026-08-11,Online sale via Razorpay CARD / order_a0uARxlNtencYF,order_a0uARxlNtencYF,,GST Output Tax,0,36846
+SV-0037,sales,2026-08-11,Online sale via Razorpay UPI / order_O7jprBGumXxY9B,order_O7jprBGumXxY9B,,Razorpay Clearing,106023,0
+SV-0037,sales,2026-08-11,Online sale via Razorpay UPI / order_O7jprBGumXxY9B,order_O7jprBGumXxY9B,,Sales,0,89850
+SV-0037,sales,2026-08-11,Online sale via Razorpay UPI / order_O7jprBGumXxY9B,order_O7jprBGumXxY9B,,GST Output Tax,0,16173
+SV-0038,sales,2026-08-11,Online sale via Razorpay CARD / order_hGi4s6AKsrpVfV,order_hGi4s6AKsrpVfV,,Razorpay Clearing,216783,0
+SV-0038,sales,2026-08-11,Online sale via Razorpay CARD / order_hGi4s6AKsrpVfV,order_hGi4s6AKsrpVfV,,Sales,0,183714
+SV-0038,sales,2026-08-11,Online sale via Razorpay CARD / order_hGi4s6AKsrpVfV,order_hGi4s6AKsrpVfV,,GST Output Tax,0,33069
+SV-0039,sales,2026-08-11,Online sale via Razorpay UPI / order_4yDcaz2YBSoGOs,order_4yDcaz2YBSoGOs,,Razorpay Clearing,1105448,0
+SV-0039,sales,2026-08-11,Online sale via Razorpay UPI / order_4yDcaz2YBSoGOs,order_4yDcaz2YBSoGOs,,Sales,0,936820
+SV-0039,sales,2026-08-11,Online sale via Razorpay UPI / order_4yDcaz2YBSoGOs,order_4yDcaz2YBSoGOs,,GST Output Tax,0,168628
+SV-0040,sales,2026-08-11,Online sale via Razorpay CARD / order_s46LmuezqpGHoP,order_s46LmuezqpGHoP,,Razorpay Clearing,50539,0
+SV-0040,sales,2026-08-11,Online sale via Razorpay CARD / order_s46LmuezqpGHoP,order_s46LmuezqpGHoP,,Sales,0,42830
+SV-0040,sales,2026-08-11,Online sale via Razorpay CARD / order_s46LmuezqpGHoP,order_s46LmuezqpGHoP,,GST Output Tax,0,7709
+SV-0041,sales,2026-08-11,Online sale via Razorpay NETBANKING / order_UjpUuMHwkpu9mq,order_UjpUuMHwkpu9mq,,Razorpay Clearing,247800,0
+SV-0041,sales,2026-08-11,Online sale via Razorpay NETBANKING / order_UjpUuMHwkpu9mq,order_UjpUuMHwkpu9mq,,Sales,0,210000
+SV-0041,sales,2026-08-11,Online sale via Razorpay NETBANKING / order_UjpUuMHwkpu9mq,order_UjpUuMHwkpu9mq,,GST Output Tax,0,37800
+SV-0042,sales,2026-08-11,Online sale via Razorpay WALLET / order_dtVK4wAAb3XZxP,order_dtVK4wAAb3XZxP,,Razorpay Clearing,338030,0
+SV-0042,sales,2026-08-11,Online sale via Razorpay WALLET / order_dtVK4wAAb3XZxP,order_dtVK4wAAb3XZxP,,Sales,0,286466
+SV-0042,sales,2026-08-11,Online sale via Razorpay WALLET / order_dtVK4wAAb3XZxP,order_dtVK4wAAb3XZxP,,GST Output Tax,0,51564
+SV-0043,sales,2026-08-11,Online sale via Razorpay UPI / order_XCwYjn5zYIkN5S,order_XCwYjn5zYIkN5S,,Razorpay Clearing,50297,0
+SV-0043,sales,2026-08-11,Online sale via Razorpay UPI / order_XCwYjn5zYIkN5S,order_XCwYjn5zYIkN5S,,Sales,0,42625
+SV-0043,sales,2026-08-11,Online sale via Razorpay UPI / order_XCwYjn5zYIkN5S,order_XCwYjn5zYIkN5S,,GST Output Tax,0,7672
+SV-0044,sales,2026-08-11,Online sale via Razorpay UPI / order_RY6HqsP795nf4G,order_RY6HqsP795nf4G,,Razorpay Clearing,455656,0
+SV-0044,sales,2026-08-11,Online sale via Razorpay UPI / order_RY6HqsP795nf4G,order_RY6HqsP795nf4G,,Sales,0,386149
+SV-0044,sales,2026-08-11,Online sale via Razorpay UPI / order_RY6HqsP795nf4G,order_RY6HqsP795nf4G,,GST Output Tax,0,69507
+RV-0008,receipt,2026-08-12,Razorpay settlement 589658397641,,589658397641,Bank,3835585,0
+RV-0008,receipt,2026-08-12,Razorpay settlement 589658397641,,589658397641,Payment Gateway Charges,77078,0
+RV-0008,receipt,2026-08-12,Razorpay settlement 589658397641,,589658397641,GST Input Credit,13874,0
+RV-0008,receipt,2026-08-12,Razorpay settlement 589658397641,,589658397641,Razorpay Clearing,0,3926537
+SV-0045,sales,2026-08-12,Online sale via Razorpay UPI / order_YETIay2BV6DfVP,order_YETIay2BV6DfVP,,Razorpay Clearing,135605,0
+SV-0045,sales,2026-08-12,Online sale via Razorpay UPI / order_YETIay2BV6DfVP,order_YETIay2BV6DfVP,,Sales,0,114919
+SV-0045,sales,2026-08-12,Online sale via Razorpay UPI / order_YETIay2BV6DfVP,order_YETIay2BV6DfVP,,GST Output Tax,0,20686
+SV-0046,sales,2026-08-12,Online sale via Razorpay NETBANKING / order_udM7Oyf5TNS05k,order_udM7Oyf5TNS05k,,Razorpay Clearing,138655,0
+SV-0046,sales,2026-08-12,Online sale via Razorpay NETBANKING / order_udM7Oyf5TNS05k,order_udM7Oyf5TNS05k,,Sales,0,117504
+SV-0046,sales,2026-08-12,Online sale via Razorpay NETBANKING / order_udM7Oyf5TNS05k,order_udM7Oyf5TNS05k,,GST Output Tax,0,21151
+SV-0047,sales,2026-08-12,Online sale via Razorpay CARD / order_czUJ4zIKdztgac,order_czUJ4zIKdztgac,,Razorpay Clearing,502897,0
+SV-0047,sales,2026-08-12,Online sale via Razorpay CARD / order_czUJ4zIKdztgac,order_czUJ4zIKdztgac,,Sales,0,426184
+SV-0047,sales,2026-08-12,Online sale via Razorpay CARD / order_czUJ4zIKdztgac,order_czUJ4zIKdztgac,,GST Output Tax,0,76713
+SV-0048,sales,2026-08-12,Online sale via Razorpay CARD / order_PL76dFKHc0hXZA,order_PL76dFKHc0hXZA,,Razorpay Clearing,75931,0
+SV-0048,sales,2026-08-12,Online sale via Razorpay CARD / order_PL76dFKHc0hXZA,order_PL76dFKHc0hXZA,,Sales,0,64348
+SV-0048,sales,2026-08-12,Online sale via Razorpay CARD / order_PL76dFKHc0hXZA,order_PL76dFKHc0hXZA,,GST Output Tax,0,11583
+SV-0049,sales,2026-08-12,Online sale via Razorpay UPI / order_i0Tzswz26DXO4O,order_i0Tzswz26DXO4O,,Razorpay Clearing,49358,0
+SV-0049,sales,2026-08-12,Online sale via Razorpay UPI / order_i0Tzswz26DXO4O,order_i0Tzswz26DXO4O,,Sales,0,41829
+SV-0049,sales,2026-08-12,Online sale via Razorpay UPI / order_i0Tzswz26DXO4O,order_i0Tzswz26DXO4O,,GST Output Tax,0,7529
+SV-0050,sales,2026-08-12,Online sale via Razorpay UPI / order_Lm7exG3lCMqXXQ,order_Lm7exG3lCMqXXQ,,Razorpay Clearing,146483,0
+SV-0050,sales,2026-08-12,Online sale via Razorpay UPI / order_Lm7exG3lCMqXXQ,order_Lm7exG3lCMqXXQ,,Sales,0,124138
+SV-0050,sales,2026-08-12,Online sale via Razorpay UPI / order_Lm7exG3lCMqXXQ,order_Lm7exG3lCMqXXQ,,GST Output Tax,0,22345
+SV-0051,sales,2026-08-12,Online sale via Razorpay CARD / order_PptEJQzhkPkenG,order_PptEJQzhkPkenG,,Razorpay Clearing,1068304,0
+SV-0051,sales,2026-08-12,Online sale via Razorpay CARD / order_PptEJQzhkPkenG,order_PptEJQzhkPkenG,,Sales,0,905342
+SV-0051,sales,2026-08-12,Online sale via Razorpay CARD / order_PptEJQzhkPkenG,order_PptEJQzhkPkenG,,GST Output Tax,0,162962
+SV-0052,sales,2026-08-12,Online sale via Razorpay CARD / order_Q5xj7t2ydf0K5u,order_Q5xj7t2ydf0K5u,,Razorpay Clearing,102813,0
+SV-0052,sales,2026-08-12,Online sale via Razorpay CARD / order_Q5xj7t2ydf0K5u,order_Q5xj7t2ydf0K5u,,Sales,0,87130
+SV-0052,sales,2026-08-12,Online sale via Razorpay CARD / order_Q5xj7t2ydf0K5u,order_Q5xj7t2ydf0K5u,,GST Output Tax,0,15683
+SV-0053,sales,2026-08-12,Online sale via Razorpay CARD / order_2jpc7Fx3gxODYf,order_2jpc7Fx3gxODYf,,Razorpay Clearing,121331,0
+SV-0053,sales,2026-08-12,Online sale via Razorpay CARD / order_2jpc7Fx3gxODYf,order_2jpc7Fx3gxODYf,,Sales,0,102823
+SV-0053,sales,2026-08-12,Online sale via Razorpay CARD / order_2jpc7Fx3gxODYf,order_2jpc7Fx3gxODYf,,GST Output Tax,0,18508
+SV-0054,sales,2026-08-12,Online sale via Razorpay UPI / order_elOxOPbbNcRV7v,order_elOxOPbbNcRV7v,,Razorpay Clearing,144876,0
+SV-0054,sales,2026-08-12,Online sale via Razorpay UPI / order_elOxOPbbNcRV7v,order_elOxOPbbNcRV7v,,Sales,0,122776
+SV-0054,sales,2026-08-12,Online sale via Razorpay UPI / order_elOxOPbbNcRV7v,order_elOxOPbbNcRV7v,,GST Output Tax,0,22100
+RV-0009,receipt,2026-08-13,Razorpay settlement 384738738918,,384738738918,Bank,2962041,0
+RV-0009,receipt,2026-08-13,Razorpay settlement 384738738918,,384738738918,Payment Gateway Charges,25495,0
+RV-0009,receipt,2026-08-13,Razorpay settlement 384738738918,,384738738918,GST Input Credit,4589,0
+RV-0009,receipt,2026-08-13,Razorpay settlement 384738738918,,384738738918,Razorpay Clearing,0,2992125
+SV-0055,sales,2026-08-13,Online sale via Razorpay CARD / order_OBAGx5diFoNPcb,order_OBAGx5diFoNPcb,,Razorpay Clearing,57755,0
+SV-0055,sales,2026-08-13,Online sale via Razorpay CARD / order_OBAGx5diFoNPcb,order_OBAGx5diFoNPcb,,Sales,0,48945
+SV-0055,sales,2026-08-13,Online sale via Razorpay CARD / order_OBAGx5diFoNPcb,order_OBAGx5diFoNPcb,,GST Output Tax,0,8810
+SV-0055-D,sales,2026-08-13,Online sale via Razorpay CARD / order_OBAGx5diFoNPcb,order_OBAGx5diFoNPcb,,Razorpay Clearing,57755,0
+SV-0055-D,sales,2026-08-13,Online sale via Razorpay CARD / order_OBAGx5diFoNPcb,order_OBAGx5diFoNPcb,,Sales,0,48945
+SV-0055-D,sales,2026-08-13,Online sale via Razorpay CARD / order_OBAGx5diFoNPcb,order_OBAGx5diFoNPcb,,GST Output Tax,0,8810
+SV-0056,sales,2026-08-13,Online sale via Razorpay UPI / order_XtPAtLpByQxCGC,order_XtPAtLpByQxCGC,,Razorpay Clearing,532054,0
+SV-0056,sales,2026-08-13,Online sale via Razorpay UPI / order_XtPAtLpByQxCGC,order_XtPAtLpByQxCGC,,Sales,0,450893
+SV-0056,sales,2026-08-13,Online sale via Razorpay UPI / order_XtPAtLpByQxCGC,order_XtPAtLpByQxCGC,,GST Output Tax,0,81161
+SV-0057,sales,2026-08-13,Online sale via Razorpay UPI / order_gxLd6GncfBAepf,order_gxLd6GncfBAepf,,Razorpay Clearing,126748,0
+SV-0057,sales,2026-08-13,Online sale via Razorpay UPI / order_gxLd6GncfBAepf,order_gxLd6GncfBAepf,,Sales,0,107414
+SV-0057,sales,2026-08-13,Online sale via Razorpay UPI / order_gxLd6GncfBAepf,order_gxLd6GncfBAepf,,GST Output Tax,0,19334
+SV-0058,sales,2026-08-13,Online sale via Razorpay WALLET / order_bdqK5Ft6IXtINB,order_bdqK5Ft6IXtINB,,Razorpay Clearing,2320645,0
+SV-0058,sales,2026-08-13,Online sale via Razorpay WALLET / order_bdqK5Ft6IXtINB,order_bdqK5Ft6IXtINB,,Sales,0,1966648
+SV-0058,sales,2026-08-13,Online sale via Razorpay WALLET / order_bdqK5Ft6IXtINB,order_bdqK5Ft6IXtINB,,GST Output Tax,0,353997
+SV-0059,sales,2026-08-13,Online sale via Razorpay CARD / order_oVdlTCJ4jC3jrA,order_oVdlTCJ4jC3jrA,,Razorpay Clearing,214246,0
+SV-0059,sales,2026-08-13,Online sale via Razorpay CARD / order_oVdlTCJ4jC3jrA,order_oVdlTCJ4jC3jrA,,Sales,0,181564
+SV-0059,sales,2026-08-13,Online sale via Razorpay CARD / order_oVdlTCJ4jC3jrA,order_oVdlTCJ4jC3jrA,,GST Output Tax,0,32682
+SV-0060,sales,2026-08-13,Online sale via Razorpay WALLET / order_kj9Zhx9PkOZAEy,order_kj9Zhx9PkOZAEy,,Razorpay Clearing,361411,0
+SV-0060,sales,2026-08-13,Online sale via Razorpay WALLET / order_kj9Zhx9PkOZAEy,order_kj9Zhx9PkOZAEy,,Sales,0,306281
+SV-0060,sales,2026-08-13,Online sale via Razorpay WALLET / order_kj9Zhx9PkOZAEy,order_kj9Zhx9PkOZAEy,,GST Output Tax,0,55130
+SV-0061,sales,2026-08-13,Online sale via Razorpay UPI / order_c01T5GOBUSZGi6,order_c01T5GOBUSZGi6,,Razorpay Clearing,439449,0
+SV-0061,sales,2026-08-13,Online sale via Razorpay UPI / order_c01T5GOBUSZGi6,order_c01T5GOBUSZGi6,,Sales,0,372414
+SV-0061,sales,2026-08-13,Online sale via Razorpay UPI / order_c01T5GOBUSZGi6,order_c01T5GOBUSZGi6,,GST Output Tax,0,67035
+SV-0062,sales,2026-08-13,Online sale via Razorpay UPI / order_SQ1IEE1HSa2bB9,order_SQ1IEE1HSa2bB9,,Razorpay Clearing,1735253,0
+SV-0062,sales,2026-08-13,Online sale via Razorpay UPI / order_SQ1IEE1HSa2bB9,order_SQ1IEE1HSa2bB9,,Sales,0,1470553
+SV-0062,sales,2026-08-13,Online sale via Razorpay UPI / order_SQ1IEE1HSa2bB9,order_SQ1IEE1HSa2bB9,,GST Output Tax,0,264700
+SV-0062-D,sales,2026-08-13,Online sale via Razorpay UPI / order_SQ1IEE1HSa2bB9,order_SQ1IEE1HSa2bB9,,Razorpay Clearing,1735253,0
+SV-0062-D,sales,2026-08-13,Online sale via Razorpay UPI / order_SQ1IEE1HSa2bB9,order_SQ1IEE1HSa2bB9,,Sales,0,1470553
+SV-0062-D,sales,2026-08-13,Online sale via Razorpay UPI / order_SQ1IEE1HSa2bB9,order_SQ1IEE1HSa2bB9,,GST Output Tax,0,264700
+CN-0004,credit_note,2026-08-14,Refund against order_udM7Oyf5TNS05k,order_udM7Oyf5TNS05k,,Sales Return,117504,0
+CN-0004,credit_note,2026-08-14,Refund against order_udM7Oyf5TNS05k,order_udM7Oyf5TNS05k,,GST Output Tax,21151,0
+CN-0004,credit_note,2026-08-14,Refund against order_udM7Oyf5TNS05k,order_udM7Oyf5TNS05k,,Razorpay Clearing,0,138655
+RV-0010,receipt,2026-08-14,Razorpay settlement 818176823971,,818176823971,Bank,2438819,0
+RV-0010,receipt,2026-08-14,Razorpay settlement 818176823971,,818176823971,Payment Gateway Charges,40199,0
+RV-0010,receipt,2026-08-14,Razorpay settlement 818176823971,,818176823971,GST Input Credit,7235,0
+RV-0010,receipt,2026-08-14,Razorpay settlement 818176823971,,818176823971,Razorpay Clearing,0,2486253
+SV-0063,sales,2026-08-14,Online sale via Razorpay UPI / order_N1orHfw88BC7vS,order_N1orHfw88BC7vS,,Razorpay Clearing,599149,0
+SV-0063,sales,2026-08-14,Online sale via Razorpay UPI / order_N1orHfw88BC7vS,order_N1orHfw88BC7vS,,Sales,0,507753
+SV-0063,sales,2026-08-14,Online sale via Razorpay UPI / order_N1orHfw88BC7vS,order_N1orHfw88BC7vS,,GST Output Tax,0,91396
+SV-0064,sales,2026-08-14,Online sale via Razorpay UPI / order_V8gz4FkQ1okTBG,order_V8gz4FkQ1okTBG,,Razorpay Clearing,80752,0
+SV-0064,sales,2026-08-14,Online sale via Razorpay UPI / order_V8gz4FkQ1okTBG,order_V8gz4FkQ1okTBG,,Sales,0,68434
+SV-0064,sales,2026-08-14,Online sale via Razorpay UPI / order_V8gz4FkQ1okTBG,order_V8gz4FkQ1okTBG,,GST Output Tax,0,12318
+SV-0065,sales,2026-08-14,Online sale via Razorpay UPI / order_PuaYV2FyCtlItZ,order_PuaYV2FyCtlItZ,,Razorpay Clearing,417939,0
+SV-0065,sales,2026-08-14,Online sale via Razorpay UPI / order_PuaYV2FyCtlItZ,order_PuaYV2FyCtlItZ,,Sales,0,354186
+SV-0065,sales,2026-08-14,Online sale via Razorpay UPI / order_PuaYV2FyCtlItZ,order_PuaYV2FyCtlItZ,,GST Output Tax,0,63753
+SV-0066,sales,2026-08-14,Online sale via Razorpay CARD / order_nsBvBqJd0ssw0F,order_nsBvBqJd0ssw0F,,Razorpay Clearing,496758,0
+SV-0066,sales,2026-08-14,Online sale via Razorpay CARD / order_nsBvBqJd0ssw0F,order_nsBvBqJd0ssw0F,,Sales,0,420981
+SV-0066,sales,2026-08-14,Online sale via Razorpay CARD / order_nsBvBqJd0ssw0F,order_nsBvBqJd0ssw0F,,GST Output Tax,0,75777
+SV-0067,sales,2026-08-14,Online sale via Razorpay NETBANKING / order_jPZ6zfKN7xVGkj,order_jPZ6zfKN7xVGkj,,Razorpay Clearing,26626,0
+SV-0067,sales,2026-08-14,Online sale via Razorpay NETBANKING / order_jPZ6zfKN7xVGkj,order_jPZ6zfKN7xVGkj,,Sales,0,22564
+SV-0067,sales,2026-08-14,Online sale via Razorpay NETBANKING / order_jPZ6zfKN7xVGkj,order_jPZ6zfKN7xVGkj,,GST Output Tax,0,4062
+SV-0068,sales,2026-08-14,Online sale via Razorpay WALLET / order_5EbOApZOXzcycD,order_5EbOApZOXzcycD,,Razorpay Clearing,67289,0
+SV-0068,sales,2026-08-14,Online sale via Razorpay WALLET / order_5EbOApZOXzcycD,order_5EbOApZOXzcycD,,Sales,0,57025
+SV-0068,sales,2026-08-14,Online sale via Razorpay WALLET / order_5EbOApZOXzcycD,order_5EbOApZOXzcycD,,GST Output Tax,0,10264
+SV-0069,sales,2026-08-14,Online sale via Razorpay UPI / order_DEEtfjgVvVqE1S,order_DEEtfjgVvVqE1S,,Razorpay Clearing,130347,0
+SV-0069,sales,2026-08-14,Online sale via Razorpay UPI / order_DEEtfjgVvVqE1S,order_DEEtfjgVvVqE1S,,Sales,0,110464
+SV-0069,sales,2026-08-14,Online sale via Razorpay UPI / order_DEEtfjgVvVqE1S,order_DEEtfjgVvVqE1S,,GST Output Tax,0,19883
+SV-0070,sales,2026-08-14,Online sale via Razorpay NETBANKING / order_ZpTjCgeOj3QYrz,order_ZpTjCgeOj3QYrz,,Razorpay Clearing,21736,0
+SV-0070,sales,2026-08-14,Online sale via Razorpay NETBANKING / order_ZpTjCgeOj3QYrz,order_ZpTjCgeOj3QYrz,,Sales,0,18420
+SV-0070,sales,2026-08-14,Online sale via Razorpay NETBANKING / order_ZpTjCgeOj3QYrz,order_ZpTjCgeOj3QYrz,,GST Output Tax,0,3316
+SV-0071,sales,2026-08-14,Online sale via Razorpay CARD / order_DsWJPiX1EwY2or,order_DsWJPiX1EwY2or,,Razorpay Clearing,517281,0
+SV-0071,sales,2026-08-14,Online sale via Razorpay CARD / order_DsWJPiX1EwY2or,order_DsWJPiX1EwY2or,,Sales,0,438374
+SV-0071,sales,2026-08-14,Online sale via Razorpay CARD / order_DsWJPiX1EwY2or,order_DsWJPiX1EwY2or,,GST Output Tax,0,78907
+RV-0011,receipt,2026-08-15,Razorpay settlement 374126193915,,374126193915,Bank,5717846,0
+RV-0011,receipt,2026-08-15,Razorpay settlement 374126193915,,374126193915,Payment Gateway Charges,59081,0
+RV-0011,receipt,2026-08-15,Razorpay settlement 374126193915,,374126193915,GST Input Credit,10634,0
+RV-0011,receipt,2026-08-15,Razorpay settlement 374126193915,,374126193915,Razorpay Clearing,0,5787561
+SV-0072,sales,2026-08-15,Online sale via Razorpay CARD / order_jL5DZPjN0MEQ7w,order_jL5DZPjN0MEQ7w,,Razorpay Clearing,36428,0
+SV-0072,sales,2026-08-15,Online sale via Razorpay CARD / order_jL5DZPjN0MEQ7w,order_jL5DZPjN0MEQ7w,,Sales,0,30871
+SV-0072,sales,2026-08-15,Online sale via Razorpay CARD / order_jL5DZPjN0MEQ7w,order_jL5DZPjN0MEQ7w,,GST Output Tax,0,5557
+SV-0073,sales,2026-08-15,Online sale via Razorpay UPI / order_826ZWOf0WOOsEg,order_826ZWOf0WOOsEg,,Razorpay Clearing,24305,0
+SV-0073,sales,2026-08-15,Online sale via Razorpay UPI / order_826ZWOf0WOOsEg,order_826ZWOf0WOOsEg,,Sales,0,20597
+SV-0073,sales,2026-08-15,Online sale via Razorpay UPI / order_826ZWOf0WOOsEg,order_826ZWOf0WOOsEg,,GST Output Tax,0,3708
+SV-0074,sales,2026-08-15,Online sale via Razorpay CARD / order_h6Yo4gfqrc5Xlr,order_h6Yo4gfqrc5Xlr,,Razorpay Clearing,144897,0
+SV-0074,sales,2026-08-15,Online sale via Razorpay CARD / order_h6Yo4gfqrc5Xlr,order_h6Yo4gfqrc5Xlr,,Sales,0,122794
+SV-0074,sales,2026-08-15,Online sale via Razorpay CARD / order_h6Yo4gfqrc5Xlr,order_h6Yo4gfqrc5Xlr,,GST Output Tax,0,22103
+SV-0075,sales,2026-08-15,Online sale via Razorpay UPI / order_7wp3BQOaxgHleu,order_7wp3BQOaxgHleu,,Razorpay Clearing,581037,0
+SV-0075,sales,2026-08-15,Online sale via Razorpay UPI / order_7wp3BQOaxgHleu,order_7wp3BQOaxgHleu,,Sales,0,492404
+SV-0075,sales,2026-08-15,Online sale via Razorpay UPI / order_7wp3BQOaxgHleu,order_7wp3BQOaxgHleu,,GST Output Tax,0,88633
+SV-0076,sales,2026-08-15,Online sale via Razorpay NETBANKING / order_9UFCGbHZIibp9f,order_9UFCGbHZIibp9f,,Razorpay Clearing,133452,0
+SV-0076,sales,2026-08-15,Online sale via Razorpay NETBANKING / order_9UFCGbHZIibp9f,order_9UFCGbHZIibp9f,,Sales,0,113095
+SV-0076,sales,2026-08-15,Online sale via Razorpay NETBANKING / order_9UFCGbHZIibp9f,order_9UFCGbHZIibp9f,,GST Output Tax,0,20357
+RV-0012,receipt,2026-08-16,Razorpay settlement 588570951585,,588570951585,Bank,2151329,0
+RV-0012,receipt,2026-08-16,Razorpay settlement 588570951585,,588570951585,Payment Gateway Charges,22595,0
+RV-0012,receipt,2026-08-16,Razorpay settlement 588570951585,,588570951585,GST Input Credit,4066,0
+RV-0012,receipt,2026-08-16,Razorpay settlement 588570951585,,588570951585,Razorpay Clearing,0,2177990
+SV-0077,sales,2026-08-16,Online sale via Razorpay WALLET / order_gAFTCloiADN5Rp,order_gAFTCloiADN5Rp,,Razorpay Clearing,30839,0
+SV-0077,sales,2026-08-16,Online sale via Razorpay WALLET / order_gAFTCloiADN5Rp,order_gAFTCloiADN5Rp,,Sales,0,26135
+SV-0077,sales,2026-08-16,Online sale via Razorpay WALLET / order_gAFTCloiADN5Rp,order_gAFTCloiADN5Rp,,GST Output Tax,0,4704
+SV-0078,sales,2026-08-16,Online sale via Razorpay UPI / order_K1xckSxKM2awH7,order_K1xckSxKM2awH7,,Razorpay Clearing,261753,0
+SV-0078,sales,2026-08-16,Online sale via Razorpay UPI / order_K1xckSxKM2awH7,order_K1xckSxKM2awH7,,Sales,0,221825
+SV-0078,sales,2026-08-16,Online sale via Razorpay UPI / order_K1xckSxKM2awH7,order_K1xckSxKM2awH7,,GST Output Tax,0,39928
+SV-0079,sales,2026-08-16,Online sale via Razorpay UPI / order_jOaBaaRQh92fn3,order_jOaBaaRQh92fn3,,Razorpay Clearing,245525,0
+SV-0079,sales,2026-08-16,Online sale via Razorpay UPI / order_jOaBaaRQh92fn3,order_jOaBaaRQh92fn3,,Sales,0,208072
+SV-0079,sales,2026-08-16,Online sale via Razorpay UPI / order_jOaBaaRQh92fn3,order_jOaBaaRQh92fn3,,GST Output Tax,0,37453
+SV-0080,sales,2026-08-16,Online sale via Razorpay CARD / order_otVz89HoZ9zDnk,order_otVz89HoZ9zDnk,,Razorpay Clearing,54397,0
+SV-0080,sales,2026-08-16,Online sale via Razorpay CARD / order_otVz89HoZ9zDnk,order_otVz89HoZ9zDnk,,Sales,0,46099
+SV-0080,sales,2026-08-16,Online sale via Razorpay CARD / order_otVz89HoZ9zDnk,order_otVz89HoZ9zDnk,,GST Output Tax,0,8298
+RV-0013,receipt,2026-08-17,Razorpay settlement 971071142284,,971071142284,Bank,875621,0
+RV-0013,receipt,2026-08-17,Razorpay settlement 971071142284,,971071142284,Payment Gateway Charges,6296,0
+RV-0013,receipt,2026-08-17,Razorpay settlement 971071142284,,971071142284,GST Input Credit,1133,0
+RV-0013,receipt,2026-08-17,Razorpay settlement 971071142284,,971071142284,Razorpay Clearing,0,883050
+SV-0081,sales,2026-08-17,Online sale via Razorpay UPI / order_vCkgafrfwA94hJ,order_vCkgafrfwA94hJ,,Razorpay Clearing,527607,0
+SV-0081,sales,2026-08-17,Online sale via Razorpay UPI / order_vCkgafrfwA94hJ,order_vCkgafrfwA94hJ,,Sales,0,447125
+SV-0081,sales,2026-08-17,Online sale via Razorpay UPI / order_vCkgafrfwA94hJ,order_vCkgafrfwA94hJ,,GST Output Tax,0,80482
+SV-0082,sales,2026-08-17,Online sale via Razorpay CARD / order_I14zGtSnovm14T,order_I14zGtSnovm14T,,Razorpay Clearing,445429,0
+SV-0082,sales,2026-08-17,Online sale via Razorpay CARD / order_I14zGtSnovm14T,order_I14zGtSnovm14T,,Sales,0,377482
+SV-0082,sales,2026-08-17,Online sale via Razorpay CARD / order_I14zGtSnovm14T,order_I14zGtSnovm14T,,GST Output Tax,0,67947
+SV-0083,sales,2026-08-17,Online sale via Razorpay CARD / order_jENUhJduRHHJEY,order_jENUhJduRHHJEY,,Razorpay Clearing,217411,0
+SV-0083,sales,2026-08-17,Online sale via Razorpay CARD / order_jENUhJduRHHJEY,order_jENUhJduRHHJEY,,Sales,0,184247
+SV-0083,sales,2026-08-17,Online sale via Razorpay CARD / order_jENUhJduRHHJEY,order_jENUhJduRHHJEY,,GST Output Tax,0,33164
+SV-0085,sales,2026-08-17,Online sale via Razorpay NETBANKING / order_Rg80USP2W5DfJX,order_Rg80USP2W5DfJX,,Razorpay Clearing,39684,0
+SV-0085,sales,2026-08-17,Online sale via Razorpay NETBANKING / order_Rg80USP2W5DfJX,order_Rg80USP2W5DfJX,,Sales,0,33631
+SV-0085,sales,2026-08-17,Online sale via Razorpay NETBANKING / order_Rg80USP2W5DfJX,order_Rg80USP2W5DfJX,,GST Output Tax,0,6053
+SV-0086,sales,2026-08-17,Online sale via Razorpay UPI / order_eLfjVHq8xiM0OG,order_eLfjVHq8xiM0OG,,Razorpay Clearing,2274965,0
+SV-0086,sales,2026-08-17,Online sale via Razorpay UPI / order_eLfjVHq8xiM0OG,order_eLfjVHq8xiM0OG,,Sales,0,1927936
+SV-0086,sales,2026-08-17,Online sale via Razorpay UPI / order_eLfjVHq8xiM0OG,order_eLfjVHq8xiM0OG,,GST Output Tax,0,347029
+SV-0087,sales,2026-08-17,Online sale via Razorpay UPI / order_uh1vauWv1zh87m,order_uh1vauWv1zh87m,,Razorpay Clearing,64649,0
+SV-0087,sales,2026-08-17,Online sale via Razorpay UPI / order_uh1vauWv1zh87m,order_uh1vauWv1zh87m,,Sales,0,54787
+SV-0087,sales,2026-08-17,Online sale via Razorpay UPI / order_uh1vauWv1zh87m,order_uh1vauWv1zh87m,,GST Output Tax,0,9862
+SV-0088,sales,2026-08-17,Online sale via Razorpay UPI / order_LW9cCdNppock7L,order_LW9cCdNppock7L,,Razorpay Clearing,135759,0
+SV-0088,sales,2026-08-17,Online sale via Razorpay UPI / order_LW9cCdNppock7L,order_LW9cCdNppock7L,,Sales,0,115050
+SV-0088,sales,2026-08-17,Online sale via Razorpay UPI / order_LW9cCdNppock7L,order_LW9cCdNppock7L,,GST Output Tax,0,20709
+SV-0089,sales,2026-08-17,Online sale via Razorpay UPI / order_YyDIfIZwXeozLH,order_YyDIfIZwXeozLH,,Razorpay Clearing,117622,0
+SV-0089,sales,2026-08-17,Online sale via Razorpay UPI / order_YyDIfIZwXeozLH,order_YyDIfIZwXeozLH,,Sales,0,99680
+SV-0089,sales,2026-08-17,Online sale via Razorpay UPI / order_YyDIfIZwXeozLH,order_YyDIfIZwXeozLH,,GST Output Tax,0,17942
+RV-0014,receipt,2026-08-18,Razorpay settlement 700527870012,,700527870012,Bank,590502,0
+RV-0014,receipt,2026-08-18,Razorpay settlement 700527870012,,700527870012,Payment Gateway Charges,1705,0
+RV-0014,receipt,2026-08-18,Razorpay settlement 700527870012,,700527870012,GST Input Credit,307,0
+RV-0014,receipt,2026-08-18,Razorpay settlement 700527870012,,700527870012,Razorpay Clearing,0,592514
+SV-0090,sales,2026-08-18,Online sale via Razorpay UPI / order_YQ7nJE1shqWmxB,order_YQ7nJE1shqWmxB,,Razorpay Clearing,433950,0
+SV-0090,sales,2026-08-18,Online sale via Razorpay UPI / order_YQ7nJE1shqWmxB,order_YQ7nJE1shqWmxB,,Sales,0,367754
+SV-0090,sales,2026-08-18,Online sale via Razorpay UPI / order_YQ7nJE1shqWmxB,order_YQ7nJE1shqWmxB,,GST Output Tax,0,66196
+SV-0091,sales,2026-08-18,Online sale via Razorpay UPI / order_SXjMpu3uDxYYMf,order_SXjMpu3uDxYYMf,,Razorpay Clearing,1145967,0
+SV-0091,sales,2026-08-18,Online sale via Razorpay UPI / order_SXjMpu3uDxYYMf,order_SXjMpu3uDxYYMf,,Sales,0,971158
+SV-0091,sales,2026-08-18,Online sale via Razorpay UPI / order_SXjMpu3uDxYYMf,order_SXjMpu3uDxYYMf,,GST Output Tax,0,174809
+SV-0092,sales,2026-08-18,Online sale via Razorpay CARD / order_xcmlzkO7rRu5yk,order_xcmlzkO7rRu5yk,,Razorpay Clearing,256830,0
+SV-0092,sales,2026-08-18,Online sale via Razorpay CARD / order_xcmlzkO7rRu5yk,order_xcmlzkO7rRu5yk,,Sales,0,217653
+SV-0092,sales,2026-08-18,Online sale via Razorpay CARD / order_xcmlzkO7rRu5yk,order_xcmlzkO7rRu5yk,,GST Output Tax,0,39177
+SV-0093,sales,2026-08-18,Online sale via Razorpay NETBANKING / order_WnoVPDF2yeE6Rs,order_WnoVPDF2yeE6Rs,,Razorpay Clearing,255654,0
+SV-0093,sales,2026-08-18,Online sale via Razorpay NETBANKING / order_WnoVPDF2yeE6Rs,order_WnoVPDF2yeE6Rs,,Sales,0,216656
+SV-0093,sales,2026-08-18,Online sale via Razorpay NETBANKING / order_WnoVPDF2yeE6Rs,order_WnoVPDF2yeE6Rs,,GST Output Tax,0,38998
+SV-0094,sales,2026-08-18,Online sale via Razorpay NETBANKING / order_iA3gaAXJLhFz9K,order_iA3gaAXJLhFz9K,,Razorpay Clearing,561617,0
+SV-0094,sales,2026-08-18,Online sale via Razorpay NETBANKING / order_iA3gaAXJLhFz9K,order_iA3gaAXJLhFz9K,,Sales,0,475947
+SV-0094,sales,2026-08-18,Online sale via Razorpay NETBANKING / order_iA3gaAXJLhFz9K,order_iA3gaAXJLhFz9K,,GST Output Tax,0,85670
+SV-0095,sales,2026-08-18,Online sale via Razorpay CARD / order_afq0fjzLczbttO,order_afq0fjzLczbttO,,Razorpay Clearing,85566,0
+SV-0095,sales,2026-08-18,Online sale via Razorpay CARD / order_afq0fjzLczbttO,order_afq0fjzLczbttO,,Sales,0,72514
+SV-0095,sales,2026-08-18,Online sale via Razorpay CARD / order_afq0fjzLczbttO,order_afq0fjzLczbttO,,GST Output Tax,0,13052
+SV-0096,sales,2026-08-18,Online sale via Razorpay UPI / order_fZCGGQccOif7Uu,order_fZCGGQccOif7Uu,,Razorpay Clearing,75921,0
+SV-0096,sales,2026-08-18,Online sale via Razorpay UPI / order_fZCGGQccOif7Uu,order_fZCGGQccOif7Uu,,Sales,0,64340
+SV-0096,sales,2026-08-18,Online sale via Razorpay UPI / order_fZCGGQccOif7Uu,order_fZCGGQccOif7Uu,,GST Output Tax,0,11581
+SV-0097,sales,2026-08-18,Online sale via Razorpay UPI / order_Q73l5PuXay1F6g,order_Q73l5PuXay1F6g,,Razorpay Clearing,1532854,0
+SV-0097,sales,2026-08-18,Online sale via Razorpay UPI / order_Q73l5PuXay1F6g,order_Q73l5PuXay1F6g,,Sales,0,1299029
+SV-0097,sales,2026-08-18,Online sale via Razorpay UPI / order_Q73l5PuXay1F6g,order_Q73l5PuXay1F6g,,GST Output Tax,0,233825
+SV-0098,sales,2026-08-18,Online sale via Razorpay UPI / order_lB5er8bOfZqfM2,order_lB5er8bOfZqfM2,,Razorpay Clearing,123926,0
+SV-0098,sales,2026-08-18,Online sale via Razorpay UPI / order_lB5er8bOfZqfM2,order_lB5er8bOfZqfM2,,Sales,0,105022
+SV-0098,sales,2026-08-18,Online sale via Razorpay UPI / order_lB5er8bOfZqfM2,order_lB5er8bOfZqfM2,,GST Output Tax,0,18904
+RV-0015,receipt,2026-08-19,Razorpay settlement 398155834299,,398155834299,Bank,3941070,0
+RV-0015,receipt,2026-08-19,Razorpay settlement 398155834299,,398155834299,Payment Gateway Charges,16807,0
+RV-0015,receipt,2026-08-19,Razorpay settlement 398155834299,,398155834299,GST Input Credit,3026,0
+RV-0015,receipt,2026-08-19,Razorpay settlement 398155834299,,398155834299,Razorpay Clearing,0,3960903
+SV-0099,sales,2026-08-19,Online sale via Razorpay UPI / order_wFgFSY0l9FLw91,order_wFgFSY0l9FLw91,,Razorpay Clearing,174284,0
+SV-0099,sales,2026-08-19,Online sale via Razorpay UPI / order_wFgFSY0l9FLw91,order_wFgFSY0l9FLw91,,Sales,0,147698
+SV-0099,sales,2026-08-19,Online sale via Razorpay UPI / order_wFgFSY0l9FLw91,order_wFgFSY0l9FLw91,,GST Output Tax,0,26586
+SV-0100,sales,2026-08-19,Online sale via Razorpay UPI / order_Ibzlpkd6XgaNJQ,order_Ibzlpkd6XgaNJQ,,Razorpay Clearing,679204,0
+SV-0100,sales,2026-08-19,Online sale via Razorpay UPI / order_Ibzlpkd6XgaNJQ,order_Ibzlpkd6XgaNJQ,,Sales,0,575597
+SV-0100,sales,2026-08-19,Online sale via Razorpay UPI / order_Ibzlpkd6XgaNJQ,order_Ibzlpkd6XgaNJQ,,GST Output Tax,0,103607
+SV-0101,sales,2026-08-19,Online sale via Razorpay UPI / order_dlm7tOtHWnsCGR,order_dlm7tOtHWnsCGR,,Razorpay Clearing,40905,0
+SV-0101,sales,2026-08-19,Online sale via Razorpay UPI / order_dlm7tOtHWnsCGR,order_dlm7tOtHWnsCGR,,Sales,0,34665
+SV-0101,sales,2026-08-19,Online sale via Razorpay UPI / order_dlm7tOtHWnsCGR,order_dlm7tOtHWnsCGR,,GST Output Tax,0,6240
+RV-0016,receipt,2026-08-20,Razorpay settlement 059753037902,,059753037902,Bank,4444917,0
+RV-0016,receipt,2026-08-20,Razorpay settlement 059753037902,,059753037902,Payment Gateway Charges,23193,0
+RV-0016,receipt,2026-08-20,Razorpay settlement 059753037902,,059753037902,GST Input Credit,4175,0
+RV-0016,receipt,2026-08-20,Razorpay settlement 059753037902,,059753037902,Razorpay Clearing,0,4472285
+SV-0102,sales,2026-08-20,Online sale via Razorpay CARD / order_1xHvAV8DnRlzGW,order_1xHvAV8DnRlzGW,,Razorpay Clearing,437668,0
+SV-0102,sales,2026-08-20,Online sale via Razorpay CARD / order_1xHvAV8DnRlzGW,order_1xHvAV8DnRlzGW,,Sales,0,370905
+SV-0102,sales,2026-08-20,Online sale via Razorpay CARD / order_1xHvAV8DnRlzGW,order_1xHvAV8DnRlzGW,,GST Output Tax,0,66763
+SV-0103,sales,2026-08-20,Online sale via Razorpay CARD / order_pvomGIyLza7wk3,order_pvomGIyLza7wk3,,Razorpay Clearing,829727,0
+SV-0103,sales,2026-08-20,Online sale via Razorpay CARD / order_pvomGIyLza7wk3,order_pvomGIyLza7wk3,,Sales,0,703158
+SV-0103,sales,2026-08-20,Online sale via Razorpay CARD / order_pvomGIyLza7wk3,order_pvomGIyLza7wk3,,GST Output Tax,0,126569
+SV-0104,sales,2026-08-20,Online sale via Razorpay UPI / order_zdmenCkhvMdgaK,order_zdmenCkhvMdgaK,,Razorpay Clearing,82546,0
+SV-0104,sales,2026-08-20,Online sale via Razorpay UPI / order_zdmenCkhvMdgaK,order_zdmenCkhvMdgaK,,Sales,0,69954
+SV-0104,sales,2026-08-20,Online sale via Razorpay UPI / order_zdmenCkhvMdgaK,order_zdmenCkhvMdgaK,,GST Output Tax,0,12592
+RV-0017,receipt,2026-08-21,Razorpay settlement 208136915432,,208136915432,Bank,894393,0
+RV-0017,receipt,2026-08-21,Razorpay settlement 208136915432,,208136915432,Payment Gateway Charges,0,0
+RV-0017,receipt,2026-08-21,Razorpay settlement 208136915432,,208136915432,GST Input Credit,0,0
+RV-0017,receipt,2026-08-21,Razorpay settlement 208136915432,,208136915432,Razorpay Clearing,0,894393
+SV-0105,sales,2026-08-21,Online sale via Razorpay UPI / order_RgSnRFsTHsDDDX,order_RgSnRFsTHsDDDX,,Razorpay Clearing,54867,0
+SV-0105,sales,2026-08-21,Online sale via Razorpay UPI / order_RgSnRFsTHsDDDX,order_RgSnRFsTHsDDDX,,Sales,0,46497
+SV-0105,sales,2026-08-21,Online sale via Razorpay UPI / order_RgSnRFsTHsDDDX,order_RgSnRFsTHsDDDX,,GST Output Tax,0,8370
+SV-0106,sales,2026-08-21,Online sale via Razorpay CARD / order_BQRKw7ah1WXPs5,order_BQRKw7ah1WXPs5,,Razorpay Clearing,264619,0
+SV-0106,sales,2026-08-21,Online sale via Razorpay CARD / order_BQRKw7ah1WXPs5,order_BQRKw7ah1WXPs5,,Sales,0,224253
+SV-0106,sales,2026-08-21,Online sale via Razorpay CARD / order_BQRKw7ah1WXPs5,order_BQRKw7ah1WXPs5,,GST Output Tax,0,40366
+SV-0107,sales,2026-08-21,Online sale via Razorpay UPI / order_ZDe1f8rESQedUS,order_ZDe1f8rESQedUS,,Razorpay Clearing,84517,0
+SV-0107,sales,2026-08-21,Online sale via Razorpay UPI / order_ZDe1f8rESQedUS,order_ZDe1f8rESQedUS,,Sales,0,71625
+SV-0107,sales,2026-08-21,Online sale via Razorpay UPI / order_ZDe1f8rESQedUS,order_ZDe1f8rESQedUS,,GST Output Tax,0,12892
+SV-0108,sales,2026-08-21,Online sale via Razorpay UPI / order_XpfKtHF4vUCsMe,order_XpfKtHF4vUCsMe,,Razorpay Clearing,43288,0
+SV-0108,sales,2026-08-21,Online sale via Razorpay UPI / order_XpfKtHF4vUCsMe,order_XpfKtHF4vUCsMe,,Sales,0,36685
+SV-0108,sales,2026-08-21,Online sale via Razorpay UPI / order_XpfKtHF4vUCsMe,order_XpfKtHF4vUCsMe,,GST Output Tax,0,6603
+SV-0109,sales,2026-08-21,Online sale via Razorpay UPI / order_g8CXL0M9iq1cvm,order_g8CXL0M9iq1cvm,,Razorpay Clearing,1103684,0
+SV-0109,sales,2026-08-21,Online sale via Razorpay UPI / order_g8CXL0M9iq1cvm,order_g8CXL0M9iq1cvm,,Sales,0,935325
+SV-0109,sales,2026-08-21,Online sale via Razorpay UPI / order_g8CXL0M9iq1cvm,order_g8CXL0M9iq1cvm,,GST Output Tax,0,168359
+CN-0005,credit_note,2026-08-22,Refund against order_jENUhJduRHHJEY,order_jENUhJduRHHJEY,,Sales Return,184247,0
+CN-0005,credit_note,2026-08-22,Refund against order_jENUhJduRHHJEY,order_jENUhJduRHHJEY,,GST Output Tax,33164,0
+CN-0005,credit_note,2026-08-22,Refund against order_jENUhJduRHHJEY,order_jENUhJduRHHJEY,,Razorpay Clearing,0,217411
+RV-0018,receipt,2026-08-22,Razorpay settlement 865055785335,,865055785335,Bank,792774,0
+RV-0018,receipt,2026-08-22,Razorpay settlement 865055785335,,865055785335,Payment Gateway Charges,14548,0
+RV-0018,receipt,2026-08-22,Razorpay settlement 865055785335,,865055785335,GST Input Credit,2619,0
+RV-0018,receipt,2026-08-22,Razorpay settlement 865055785335,,865055785335,Razorpay Clearing,0,809941
+SV-0110,sales,2026-08-22,Online sale via Razorpay UPI / order_rtaUWM6ZO88eb0,order_rtaUWM6ZO88eb0,,Razorpay Clearing,292418,0
+SV-0110,sales,2026-08-22,Online sale via Razorpay UPI / order_rtaUWM6ZO88eb0,order_rtaUWM6ZO88eb0,,Sales,0,247812
+SV-0110,sales,2026-08-22,Online sale via Razorpay UPI / order_rtaUWM6ZO88eb0,order_rtaUWM6ZO88eb0,,GST Output Tax,0,44606
+SV-0111,sales,2026-08-22,Online sale via Razorpay NETBANKING / order_jM1tLB4pyyRyMX,order_jM1tLB4pyyRyMX,,Razorpay Clearing,156975,0
+SV-0111,sales,2026-08-22,Online sale via Razorpay NETBANKING / order_jM1tLB4pyyRyMX,order_jM1tLB4pyyRyMX,,Sales,0,133030
+SV-0111,sales,2026-08-22,Online sale via Razorpay NETBANKING / order_jM1tLB4pyyRyMX,order_jM1tLB4pyyRyMX,,GST Output Tax,0,23945
+SV-0112,sales,2026-08-22,Online sale via Razorpay NETBANKING / order_QTOZmLtmaeSUHA,order_QTOZmLtmaeSUHA,,Razorpay Clearing,37729,0
+SV-0112,sales,2026-08-22,Online sale via Razorpay NETBANKING / order_QTOZmLtmaeSUHA,order_QTOZmLtmaeSUHA,,Sales,0,31974
+SV-0112,sales,2026-08-22,Online sale via Razorpay NETBANKING / order_QTOZmLtmaeSUHA,order_QTOZmLtmaeSUHA,,GST Output Tax,0,5755
+SV-0113,sales,2026-08-22,Online sale via Razorpay NETBANKING / order_Fs9Z6YkRYU7oe1,order_Fs9Z6YkRYU7oe1,,Razorpay Clearing,147623,0
+SV-0113,sales,2026-08-22,Online sale via Razorpay NETBANKING / order_Fs9Z6YkRYU7oe1,order_Fs9Z6YkRYU7oe1,,Sales,0,125104
+SV-0113,sales,2026-08-22,Online sale via Razorpay NETBANKING / order_Fs9Z6YkRYU7oe1,order_Fs9Z6YkRYU7oe1,,GST Output Tax,0,22519
+RV-0019,receipt,2026-08-23,Razorpay settlement 291244498513,,291244498513,Bank,1544730,0
+RV-0019,receipt,2026-08-23,Razorpay settlement 291244498513,,291244498513,Payment Gateway Charges,27142,0
+RV-0019,receipt,2026-08-23,Razorpay settlement 291244498513,,291244498513,GST Input Credit,4886,0
+RV-0019,receipt,2026-08-23,Razorpay settlement 291244498513,,291244498513,Razorpay Clearing,0,1576758
+SV-0114,sales,2026-08-23,Online sale via Razorpay CARD / order_CaY18HslxBc6An,order_CaY18HslxBc6An,,Razorpay Clearing,379853,0
+SV-0114,sales,2026-08-23,Online sale via Razorpay CARD / order_CaY18HslxBc6An,order_CaY18HslxBc6An,,Sales,0,321909
+SV-0114,sales,2026-08-23,Online sale via Razorpay CARD / order_CaY18HslxBc6An,order_CaY18HslxBc6An,,GST Output Tax,0,57944
+SV-0115,sales,2026-08-23,Online sale via Razorpay CARD / order_kwXoIIXGvOoNZY,order_kwXoIIXGvOoNZY,,Razorpay Clearing,67608,0
+SV-0115,sales,2026-08-23,Online sale via Razorpay CARD / order_kwXoIIXGvOoNZY,order_kwXoIIXGvOoNZY,,Sales,0,57295
+SV-0115,sales,2026-08-23,Online sale via Razorpay CARD / order_kwXoIIXGvOoNZY,order_kwXoIIXGvOoNZY,,GST Output Tax,0,10313
+SV-0116,sales,2026-08-23,Online sale via Razorpay UPI / order_9gy1CJdObOIRpF,order_9gy1CJdObOIRpF,,Razorpay Clearing,102789,0
+SV-0116,sales,2026-08-23,Online sale via Razorpay UPI / order_9gy1CJdObOIRpF,order_9gy1CJdObOIRpF,,Sales,0,87109
+SV-0116,sales,2026-08-23,Online sale via Razorpay UPI / order_9gy1CJdObOIRpF,order_9gy1CJdObOIRpF,,GST Output Tax,0,15680
+SV-0117,sales,2026-08-23,Online sale via Razorpay UPI / order_PAfqoQB7xoFcSv,order_PAfqoQB7xoFcSv,,Razorpay Clearing,135019,0
+SV-0117,sales,2026-08-23,Online sale via Razorpay UPI / order_PAfqoQB7xoFcSv,order_PAfqoQB7xoFcSv,,Sales,0,114423
+SV-0117,sales,2026-08-23,Online sale via Razorpay UPI / order_PAfqoQB7xoFcSv,order_PAfqoQB7xoFcSv,,GST Output Tax,0,20596
+SV-0118,sales,2026-08-23,Online sale via Razorpay NETBANKING / order_4XPSL2oRlPhDBu,order_4XPSL2oRlPhDBu,,Razorpay Clearing,443618,0
+SV-0118,sales,2026-08-23,Online sale via Razorpay NETBANKING / order_4XPSL2oRlPhDBu,order_4XPSL2oRlPhDBu,,Sales,0,375947
+SV-0118,sales,2026-08-23,Online sale via Razorpay NETBANKING / order_4XPSL2oRlPhDBu,order_4XPSL2oRlPhDBu,,GST Output Tax,0,67671
+SV-0119,sales,2026-08-23,Online sale via Razorpay CARD / order_H8LmyqoYMaaItD,order_H8LmyqoYMaaItD,,Razorpay Clearing,29053,0
+SV-0119,sales,2026-08-23,Online sale via Razorpay CARD / order_H8LmyqoYMaaItD,order_H8LmyqoYMaaItD,,Sales,0,24621
+SV-0119,sales,2026-08-23,Online sale via Razorpay CARD / order_H8LmyqoYMaaItD,order_H8LmyqoYMaaItD,,GST Output Tax,0,4432
+SV-0120,sales,2026-08-23,Online sale via Razorpay CARD / order_ncQODOWlgQl3cA,order_ncQODOWlgQl3cA,,Razorpay Clearing,456441,0
+SV-0120,sales,2026-08-23,Online sale via Razorpay CARD / order_ncQODOWlgQl3cA,order_ncQODOWlgQl3cA,,Sales,0,386814
+SV-0120,sales,2026-08-23,Online sale via Razorpay CARD / order_ncQODOWlgQl3cA,order_ncQODOWlgQl3cA,,GST Output Tax,0,69627

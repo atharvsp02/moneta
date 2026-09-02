@@ -1,0 +1,93 @@
+[
+  {
+    "order_id": "536239047358",
+    "error_type": "AGGREGATE_FEE_MISMATCH",
+    "description": "Books booked gateway fee at an assumed flat 1.75% on gross; Razorpay charged per-method MDR (UPI is zero-rated).",
+    "impact_paise": 108333,
+    "side": "books"
+  },
+  {
+    "order_id": "292913858167",
+    "error_type": "AGGREGATE_FEE_MISMATCH",
+    "description": "Books booked gateway fee at an assumed flat 1.75% on gross; Razorpay charged per-method MDR (UPI is zero-rated).",
+    "impact_paise": -864,
+    "side": "books"
+  },
+  {
+    "order_id": "645981318941",
+    "error_type": "GST_INPUT_ROUNDING_DRIFT",
+    "description": "Books computed GST input credit as 18% of the aggregate fee; Razorpay rounds GST per transaction, so the totals differ by a few paise.",
+    "impact_paise": 2,
+    "side": "books"
+  },
+  {
+    "order_id": "order_AFhhwRw77qvl8e",
+    "error_type": "MISSING_REFUND_IN_BOOKS",
+    "description": "Razorpay netted a refund out of settlement; no credit note exists in the books.",
+    "impact_paise": 341650,
+    "side": "books"
+  },
+  {
+    "order_id": "order_uFFpc1c5eHpd5M",
+    "error_type": "MISSING_REFUND_IN_BOOKS",
+    "description": "Razorpay netted a refund out of settlement; no credit note exists in the books.",
+    "impact_paise": 12973,
+    "side": "books"
+  },
+  {
+    "order_id": "order_PpQKjhvp3k64Ka",
+    "error_type": "DUPLICATE_BOOKING",
+    "description": "The same order was entered twice in the sales ledger.",
+    "impact_paise": 229932,
+    "side": "books"
+  },
+  {
+    "order_id": "order_ClStSEoOffPj6Z",
+    "error_type": "DUPLICATE_BOOKING",
+    "description": "The same order was entered twice in the sales ledger.",
+    "impact_paise": 1972721,
+    "side": "books"
+  },
+  {
+    "order_id": "order_VJBMQKnY8qS0BF",
+    "error_type": "MISSING_IN_BOOKS",
+    "description": "Razorpay settled this payment but the sales voucher was never recorded.",
+    "impact_paise": 116678,
+    "side": "books"
+  },
+  {
+    "order_id": "order_9hVvbVcl1A2ufe",
+    "error_type": "MISSING_IN_BOOKS",
+    "description": "Razorpay settled this payment but the sales voucher was never recorded.",
+    "impact_paise": 136833,
+    "side": "books"
+  },
+  {
+    "order_id": "order_3gC1CKrKpug8Ef",
+    "error_type": "AMOUNT_MISMATCH",
+    "description": "Sales voucher gross does not equal the payment amount Razorpay settled (digit transposition).",
+    "impact_paise": 900,
+    "side": "books"
+  },
+  {
+    "order_id": "order_Pa3eGxZwJrAozs",
+    "error_type": "AMOUNT_MISMATCH",
+    "description": "Sales voucher gross does not equal the payment amount Razorpay settled (digit transposition).",
+    "impact_paise": 270,
+    "side": "books"
+  },
+  {
+    "order_id": "order_OMMxFm7N3jWeC2",
+    "error_type": "AMOUNT_MISMATCH",
+    "description": "Sales voucher gross does not equal the payment amount Razorpay settled (digit transposition).",
+    "impact_paise": 2700,
+    "side": "books"
+  },
+  {
+    "order_id": "order_WvOz1MxbcgMwee",
+    "error_type": "CROSS_CYCLE_REFUND",
+    "description": "Books recorded the credit note in the cycle the refund was issued, but Razorpay netted it out of the following settlement cycle.",
+    "impact_paise": 38926,
+    "side": "timing"
+  }
+]
