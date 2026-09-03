@@ -1,5 +1,5 @@
 {
-  "run_id": "run_d15eb8f4c3a9",
+  "run_id": "run_14c251ec8400",
   "dataset": "dev",
   "match_rate": {
     "records_matched": 115,
@@ -10,8 +10,8 @@
     "match_rate_value": 0.9362
   },
   "throughput": {
-    "deterministic_runtime_ms": 0.73,
-    "records_per_second": 170484.5,
+    "deterministic_runtime_ms": 0.74,
+    "records_per_second": 166480.0,
     "agent_runtime_ms": 0,
     "agent_cases": 0
   },
@@ -70,7 +70,7 @@
     "291244498513"
   ],
   "agent_ran": false,
-  "agent_error": null,
+  "agent_error": "No Gemini API key found. Set GEMINI_API_KEY (or GOOGLE_API_KEY). The deterministic engine runs without it; the investigation agent needs it.",
   "agent_tokens": {
     "input": 0,
     "output": 0

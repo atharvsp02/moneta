@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from .generate import generate
+from .agent import MODEL, resolve_api_key
 from .pipeline import run
 
 DEFAULT_DATA_DIR = Path("data")
@@ -28,6 +29,7 @@ def _cmd_reconcile(args: argparse.Namespace) -> int:
         use_agent=not args.no_agent,
         progress=None if args.quiet else progress,
         model=args.model,
+        min_interval=args.min_interval,
     )
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -43,6 +45,27 @@ def _cmd_reconcile(args: argparse.Namespace) -> int:
     print(f"\naudit trail : {audit_path}")
     print(f"report      : {report_path}")
     print(f"findings    : {findings_path}")
+    return 0
+
+
+def _cmd_models(args: argparse.Namespace) -> int:
+    from google import genai
+
+    key = resolve_api_key()
+    if not key:
+        print("No Gemini API key found. Set GEMINI_API_KEY or GOOGLE_API_KEY.")
+        return 1
+    client = genai.Client(api_key=key)
+    rows = []
+    for m in client.models.list():
+        actions = getattr(m, "supported_actions", None) or []
+        if actions and "generateContent" not in actions:
+            continue
+        rows.append((m.name.replace("models/", ""), getattr(m, "display_name", "") or ""))
+    for name, display in sorted(rows):
+        marker = " <- default" if name == MODEL else ""
+        print(f"  {name:42s} {display}{marker}")
+    print(f"\n{len(rows)} models support generateContent")
     return 0
 
 
@@ -62,9 +85,13 @@ def build_parser() -> argparse.ArgumentParser:
     rec.add_argument("--data-dir", default=str(DEFAULT_DATA_DIR))
     rec.add_argument("--out", default="out")
     rec.add_argument("--no-agent", action="store_true", help="Run the deterministic pass only.")
-    rec.add_argument("--model", default=None)
+    rec.add_argument("--model", default=None, help=f"Gemini model id (default: {MODEL}).")
+    rec.add_argument("--min-interval", type=float, default=None, help="Seconds between API calls; free tier is rate limited.")
     rec.add_argument("--quiet", action="store_true")
     rec.set_defaults(func=_cmd_reconcile)
+
+    mod = sub.add_parser("models", help="List Gemini models available to your API key.")
+    mod.set_defaults(func=_cmd_models)
 
     return parser
 

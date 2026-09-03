@@ -124,6 +124,7 @@ def run(
     use_agent: bool = True,
     progress=None,
     model: str | None = None,
+    min_interval: float | None = None,
 ) -> RunResult:
     run_id = f"run_{uuid.uuid4().hex[:12]}"
     audit = AuditLog(run_id=run_id)
@@ -164,7 +165,10 @@ def run(
 
     if use_agent and cases:
         try:
-            agent = InvestigationAgent(dataset, recon, model=model or MODEL)
+            agent = InvestigationAgent(
+                dataset, recon, model=model or MODEL,
+                **({} if min_interval is None else {"min_request_interval_s": min_interval}),
+            )
         except RuntimeError as exc:
             result.agent_error = str(exc)
             audit.record("agent_unavailable", reason=str(exc))

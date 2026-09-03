@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Settlement intelligence agent: reconciles Razorpay settlements against merchant books with explainable exception handling."
 requires-python = ">=3.11"
 dependencies = [
-    "anthropic>=0.39",
+    "google-genai>=2.0",
     "fastapi>=0.115",
     "uvicorn[standard]>=0.32",
 ]
