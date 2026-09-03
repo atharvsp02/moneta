@@ -6,6 +6,7 @@ import os
 import random
 import time
 from dataclasses import asdict, dataclass, field
+from pathlib import Path
 from datetime import datetime, timezone
 
 from google import genai
@@ -242,11 +243,34 @@ def _summarize(result: dict) -> str:
     return text if len(text) <= 240 else text[:237] + "..."
 
 
+KEY_VARS = ("GEMINI_API_KEY", "GOOGLE_API_KEY", "GOOGLE_GENAI_API_KEY")
+
+
+def load_dotenv(path: Path | None = None) -> dict[str, str]:
+    candidates = [path] if path else [Path.cwd() / ".env", Path(__file__).resolve().parents[2] / ".env"]
+    values: dict[str, str] = {}
+    for candidate in candidates:
+        if not candidate or not candidate.is_file():
+            continue
+        for line in candidate.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            values[key.strip()] = value.strip().strip("'\"")
+        break
+    return values
+
+
 def resolve_api_key() -> str | None:
-    for var in ("GEMINI_API_KEY", "GOOGLE_API_KEY", "GOOGLE_GENAI_API_KEY"):
+    for var in KEY_VARS:
         value = os.environ.get(var)
         if value:
             return value
+    dotenv = load_dotenv()
+    for var in KEY_VARS:
+        if dotenv.get(var):
+            return dotenv[var]
     return None
 
 
