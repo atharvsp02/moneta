@@ -9,6 +9,9 @@ dependencies = [
     "uvicorn[standard]>=0.32",
 ]
 
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "httpx>=0.27"]
+
 [project.scripts]
 moneta = "moneta.cli:main"
 

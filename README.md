@@ -288,6 +288,19 @@ out/             reports, findings, audit trails, eval results
 | `moneta serve` | Serve the reconciliation API for the dashboard |
 | `moneta models` | List Gemini models available to your key |
 
+## Tests
+
+```bash
+pip install -e ".[dev]"
+pytest -q          # 76 tests, no API key required
+```
+
+Covers the half-up rounding that the whole ledger depends on, the engine's match and
+exception paths, the seam where the engine refuses to attribute a cause, the eval
+matcher, and the read-only guarantee — that last one asserts every tool in the registry
+is a read and that calling all eleven leaves the dataset byte-identical, so the claim in
+**Safety and scope** is enforced by a test rather than by prose.
+
 ---
 
 ## Web routes

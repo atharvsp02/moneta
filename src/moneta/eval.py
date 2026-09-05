@@ -27,6 +27,9 @@ CORRECT = "correct"
 MISCLASSIFIED = "misclassified"
 MISSED = "missed"
 
+# The agent's honest non-answer. Scored as a miss, never as a wrong claim.
+UNRESOLVED = "UNRESOLVED"
+
 
 @dataclass
 class Prediction:
@@ -187,7 +190,18 @@ def _match(labels: list[dict], predictions: list[Prediction]):
 
 
 def _per_class(outcomes: list[Outcome], false_positives: list[Prediction]) -> dict:
-    classes = {o.expected for o in outcomes} | {p.classification for p in false_positives}
+    # Every class that was either expected or claimed needs a row. A class that only
+    # ever appears as a *wrong* attribution would otherwise be absent from the table
+    # entirely, hiding its false positive and overstating macro precision.
+    # UNRESOLVED is excluded: it is an honest non-answer, not a claim about a root
+    # cause, and scoring it as a wrong claim would penalise the behaviour this system
+    # is built to prefer. It still costs the true class its recall, and it is reported
+    # separately as `honestly_unresolved`.
+    classes = (
+        {o.expected for o in outcomes}
+        | {o.predicted for o in outcomes if o.predicted}
+        | {p.classification for p in false_positives}
+    ) - {UNRESOLVED}
     table: dict[str, dict] = {}
     for cls in sorted(classes):
         expected = [o for o in outcomes if o.expected == cls]
@@ -224,11 +238,13 @@ def evaluate(result: RunResult, data_dir: Path, name: str) -> EvalResult:
 
     correct = [o for o in outcomes if o.status == CORRECT]
     detected = [o for o in outcomes if o.status in (CORRECT, MISCLASSIFIED)]
-    unresolved = [o for o in outcomes if o.predicted == "UNRESOLVED"]
+    unresolved = [o for o in outcomes if o.predicted == UNRESOLVED]
     total = len(outcomes)
 
     micro_tp = len(correct)
-    micro_fp = len(unclaimed) + sum(1 for o in outcomes if o.status == MISCLASSIFIED)
+    micro_fp = len([p for p in unclaimed if p.classification != UNRESOLVED]) + sum(
+        1 for o in outcomes if o.status == MISCLASSIFIED and o.predicted != UNRESOLVED
+    )
     micro_fn = total - micro_tp
     scored = [c for c in per_class.values() if c["precision"] is not None]
     recalled = [c for c in per_class.values() if c["recall"] is not None]
