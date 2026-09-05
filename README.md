@@ -272,3 +272,15 @@ out/             reports, findings, audit trails, eval results
 | `moneta eval` | Reconcile and score against the dataset's ground-truth labels |
 | `moneta serve` | Serve the reconciliation API for the dashboard |
 | `moneta models` | List Gemini models available to your key |
+
+---
+
+## Web routes
+
+| Route | What it is |
+|---|---|
+| `/` | Landing page — the problem, the approach, the held-out results, FAQ |
+| `/dashboard` | The working dashboard: overview, exceptions, records, Ask Moneta, evaluation, audit trail |
+
+The landing page shows live figures when the API is running and falls back to the
+committed run artefacts when it is not, so a fresh clone still renders real numbers.
