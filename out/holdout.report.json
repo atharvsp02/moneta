@@ -1,5 +1,5 @@
 {
-  "run_id": "run_d1e4334915e9",
+  "run_id": "run_fe1e72246e0f",
   "dataset": "holdout",
   "match_rate": {
     "records_matched": 120,
@@ -10,21 +10,28 @@
     "match_rate_value": 0.9169
   },
   "throughput": {
-    "deterministic_runtime_ms": 0.93,
-    "records_per_second": 139023.6,
-    "agent_runtime_ms": 0,
-    "agent_cases": 0
+    "deterministic_runtime_ms": 1.38,
+    "records_per_second": 93668.3,
+    "agent_runtime_ms": 278884.62,
+    "agent_cases": 5
   },
   "exceptions": {
     "total": 16,
     "closed_by_rules": 9,
-    "investigated_by_agent": 0,
+    "investigated_by_agent": 5,
     "breakdown": [
       {
         "category": "MISSING_IN_BOOKS",
         "count": 2,
         "value_paise": 2189870,
         "value": "₹21,898.70",
+        "resolved_by": "rules"
+      },
+      {
+        "category": "AMOUNT_MISMATCH",
+        "count": 4,
+        "value_paise": 1316494,
+        "value": "₹13,164.94",
         "resolved_by": "rules"
       },
       {
@@ -35,18 +42,32 @@
         "resolved_by": "rules"
       },
       {
-        "category": "AMOUNT_MISMATCH",
-        "count": 3,
-        "value_paise": 722070,
-        "value": "₹7,220.70",
-        "resolved_by": "rules"
-      },
-      {
         "category": "MISSING_REFUND_IN_BOOKS",
         "count": 2,
         "value_paise": 637443,
         "value": "₹6,374.43",
         "resolved_by": "rules"
+      },
+      {
+        "category": "CROSS_CYCLE_REFUND",
+        "count": 1,
+        "value_paise": 594424,
+        "value": "₹5,944.24",
+        "resolved_by": "agent"
+      },
+      {
+        "category": "AGGREGATE_FEE_MISMATCH",
+        "count": 2,
+        "value_paise": 148463,
+        "value": "₹1,484.63",
+        "resolved_by": "agent"
+      },
+      {
+        "category": "GST_INPUT_ROUNDING_DRIFT",
+        "count": 1,
+        "value_paise": 3,
+        "value": "₹0.03",
+        "resolved_by": "agent"
       }
     ]
   },
@@ -62,17 +83,11 @@
     "unexplained_paise": -197512
   },
   "could_not_resolve": [],
-  "not_investigated": [
-    "331627450189",
-    "982955232443",
-    "620720614996",
-    "460081661474",
-    "640771585351"
-  ],
-  "agent_ran": false,
+  "not_investigated": [],
+  "agent_ran": true,
   "agent_error": null,
   "agent_tokens": {
-    "input": 0,
-    "output": 0
+    "input": 121709,
+    "output": 3161
   }
 }

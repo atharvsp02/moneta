@@ -1,5 +1,5 @@
 {
-  "run_id": "run_14c251ec8400",
+  "run_id": "run_0c9721024cdc",
   "dataset": "dev",
   "match_rate": {
     "records_matched": 115,
@@ -10,15 +10,15 @@
     "match_rate_value": 0.9362
   },
   "throughput": {
-    "deterministic_runtime_ms": 0.74,
-    "records_per_second": 166480.0,
-    "agent_runtime_ms": 0,
-    "agent_cases": 0
+    "deterministic_runtime_ms": 0.8,
+    "records_per_second": 155466.4,
+    "agent_runtime_ms": 152313.06,
+    "agent_cases": 5
   },
   "exceptions": {
     "total": 16,
     "closed_by_rules": 9,
-    "investigated_by_agent": 0,
+    "investigated_by_agent": 5,
     "breakdown": [
       {
         "category": "DUPLICATE_BOOKING",
@@ -43,10 +43,24 @@
       },
       {
         "category": "MISSING_REFUND_IN_BOOKS",
-        "count": 2,
-        "value_paise": 78301,
-        "value": "₹783.01",
+        "count": 3,
+        "value_paise": 129618,
+        "value": "₹1,296.18",
         "resolved_by": "rules"
+      },
+      {
+        "category": "GST_INPUT_ROUNDING_DRIFT",
+        "count": 2,
+        "value_paise": 51319,
+        "value": "₹513.19",
+        "resolved_by": "agent"
+      },
+      {
+        "category": "AGGREGATE_FEE_MISMATCH",
+        "count": 2,
+        "value_paise": 33940,
+        "value": "₹339.40",
+        "resolved_by": "agent"
       }
     ]
   },
@@ -62,17 +76,11 @@
     "unexplained_paise": 1902061
   },
   "could_not_resolve": [],
-  "not_investigated": [
-    "821495625535",
-    "079593718587",
-    "079593718587",
-    "594996572458",
-    "291244498513"
-  ],
-  "agent_ran": false,
-  "agent_error": "No Gemini API key found. Set GEMINI_API_KEY (or GOOGLE_API_KEY). The deterministic engine runs without it; the investigation agent needs it.",
+  "not_investigated": [],
+  "agent_ran": true,
+  "agent_error": null,
   "agent_tokens": {
-    "input": 0,
-    "output": 0
+    "input": 104396,
+    "output": 2649
   }
 }

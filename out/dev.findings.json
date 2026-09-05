@@ -1,1 +1,328 @@
-[]
+[
+  {
+    "case_key": "821495625535",
+    "scope": "settlement",
+    "family": "fee_and_gst",
+    "exception_ids": [
+      "EX-0010",
+      "EX-0011"
+    ],
+    "delta_paise": -8157,
+    "classification": "AGGREGATE_FEE_MISMATCH",
+    "confidence": "high",
+    "explanation": "The merchant booked the gateway fee and GST input credit in receipt voucher RV-0003 using a flat percentage or estimated blended rate across all collections, rather than accounting for per-method MDR. Specifically, Razorpay charged ₹889.78 in fees and ₹160.16 in GST across the 8 payment entries (which included UPI transactions at 0% MDR), whereas the merchant booked ₹820.65 in fees and ₹147.72 in GST. This results in an under-booking of gateway fees by ₹69.13 and GST input credit by ₹12.44.",
+    "evidence": [
+      "Settlement UTR: 821495625535",
+      "Booked gateway fee in RV-0003: ₹820.65; Actual Razorpay fee: ₹889.78 (delta: -₹69.13)",
+      "Booked GST input credit in RV-0003: ₹147.72; Actual Razorpay GST on fee: ₹160.16 (delta: -₹12.44)",
+      "Payment breakdown includes UPI transactions with 0% MDR (₹0.00 fee) and Card/Netbanking transactions at 2% MDR"
+    ],
+    "recommended_action": "Adjust the merchant's books (journal voucher or correction to RV-0003) to debit 'Payment Gateway Charges' by an additional ₹69.13 and 'GST Input Credit' by an additional ₹12.44, offsetting 'Razorpay Clearing' accordingly.",
+    "tool_calls": [
+      {
+        "tool": "list_settlement_cycles",
+        "arguments": {},
+        "ok": true,
+        "result_summary": "{\"cycle_count\": 19, \"cycles\": [{\"settlement_utr\": \"471257795428\", \"settled_at\": \"2026-08-05T11:00:00\", \"payment_count\": 4, \"refund_count\": 0, \"net_credit\": {\"paise\": 2349248, \"formatted\": \"\\u20b923,492.48\"}}, {\"settlement_utr\": \"76738505...",
+        "duration_ms": 0.4144999838899821
+      },
+      {
+        "tool": "fetch_settlement",
+        "arguments": {
+          "settlement_utr": "821495625535"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_id\": \"setl_PpfiVbbXz1jsxl\", \"settlement_utr\": \"821495625535\", \"settled_at\": \"2026-08-07T11:00:00\", \"payment_count\": 8, \"refund_count\": 0, \"gross_payments\": {\"paise\": 4689451, \"formatted\": \"\\u20b946,894.51\"}, \"total_fee\": {\"p...",
+        "duration_ms": 0.222100003156811
+      },
+      {
+        "tool": "compute_fee_breakdown",
+        "arguments": {
+          "settlement_utr": "821495625535"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_utr\": \"821495625535\", \"gross\": {\"paise\": 4689451, \"formatted\": \"\\u20b946,894.51\"}, \"total_fee\": {\"paise\": 88978, \"formatted\": \"\\u20b9889.78\"}, \"total_gst_on_fee\": {\"paise\": 16016, \"formatted\": \"\\u20b9160.16\"}, \"blended_mdr_b...",
+        "duration_ms": 3.58399999095127
+      },
+      {
+        "tool": "fetch_settlement_entries",
+        "arguments": {
+          "settlement_utr": "821495625535"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_utr\": \"821495625535\", \"total_matching\": 8, \"returned\": 8, \"entries\": [{\"entity_id\": \"pay_pTifmrI1YiJCD1\", \"type\": \"payment\", \"order_id\": \"order_ymDswpBcrQbvZj\", \"method\": \"card\", \"amount\": {\"paise\": 1596914, \"formatted\": \"\\u...",
+        "duration_ms": 0.12030001380480826
+      }
+    ],
+    "turns": 5,
+    "input_tokens": 20892,
+    "output_tokens": 498,
+    "duration_ms": 26215.501600003336,
+    "rate_limit_waits": 0,
+    "error": null,
+    "investigated_at": "2026-09-05T10:21:35.429465+00:00",
+    "delta": "-₹81.57"
+  },
+  {
+    "case_key": "079593718587",
+    "scope": "settlement",
+    "family": "fee_and_gst",
+    "exception_ids": [
+      "EX-0012"
+    ],
+    "delta_paise": -2,
+    "classification": "GST_INPUT_ROUNDING_DRIFT",
+    "confidence": "high",
+    "explanation": "The merchant booked GST input credit of ₹4.74 in receipt voucher RV-0006 for settlement UTR 079593718587, whereas Razorpay's actual tax levied on the MDR fee across the 2 card payments totals ₹4.76 (₹2.32 + ₹2.44). This creates a rounding drift of ₹0.02 where the books under-booked GST input credit by 2 paise relative to the settlement report.",
+    "evidence": [
+      "Settlement UTR: 079593718587",
+      "Receipt voucher RV-0006 booked GST Input Credit: ₹4.74 (474 paise)",
+      "Razorpay settlement computed GST on fee: ₹4.76 (476 paise) across card payments (pay_AldOKMgwKOOUcS tax ₹2.32 + pay_rvWdFrK9xiRGHO tax ₹2.44)",
+      "Unexplained delta: -₹0.02 (books minus Razorpay)"
+    ],
+    "recommended_action": "Pass a journal voucher to debit GST Input Credit by ₹0.02 and credit Payment Gateway Clearing or rounding suspense by ₹0.02 to reconcile RV-0006 with Razorpay's tax breakdown.",
+    "tool_calls": [
+      {
+        "tool": "list_settlement_cycles",
+        "arguments": {},
+        "ok": true,
+        "result_summary": "{\"cycle_count\": 19, \"cycles\": [{\"settlement_utr\": \"471257795428\", \"settled_at\": \"2026-08-05T11:00:00\", \"payment_count\": 4, \"refund_count\": 0, \"net_credit\": {\"paise\": 2349248, \"formatted\": \"\\u20b923,492.48\"}}, {\"settlement_utr\": \"76738505...",
+        "duration_ms": 0.4523000097833574
+      },
+      {
+        "tool": "compute_fee_breakdown",
+        "arguments": {
+          "settlement_utr": "079593718587"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_utr\": \"079593718587\", \"gross\": {\"paise\": 252234, \"formatted\": \"\\u20b92,522.34\"}, \"total_fee\": {\"paise\": 2647, \"formatted\": \"\\u20b926.47\"}, \"total_gst_on_fee\": {\"paise\": 476, \"formatted\": \"\\u20b94.76\"}, \"blended_mdr_bps\": 104...",
+        "duration_ms": 0.18769997404888272
+      },
+      {
+        "tool": "fetch_settlement_entries",
+        "arguments": {
+          "settlement_utr": "079593718587"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_utr\": \"079593718587\", \"total_matching\": 3, \"returned\": 3, \"entries\": [{\"entity_id\": \"pay_AldOKMgwKOOUcS\", \"type\": \"payment\", \"order_id\": \"order_7G4AOkHs0GnG5m\", \"method\": \"card\", \"amount\": {\"paise\": 64570, \"formatted\": \"\\u20...",
+        "duration_ms": 0.13139998191036284
+      },
+      {
+        "tool": "fetch_settlement",
+        "arguments": {
+          "settlement_utr": "079593718587"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_id\": \"setl_4veCaQ90l5Ukys\", \"settlement_utr\": \"079593718587\", \"settled_at\": \"2026-08-10T11:00:00\", \"payment_count\": 3, \"refund_count\": 0, \"gross_payments\": {\"paise\": 252234, \"formatted\": \"\\u20b92,522.34\"}, \"total_fee\": {\"pai...",
+        "duration_ms": 0.40779999108053744
+      }
+    ],
+    "turns": 5,
+    "input_tokens": 18807,
+    "output_tokens": 435,
+    "duration_ms": 29632.83380001667,
+    "rate_limit_waits": 0,
+    "error": null,
+    "investigated_at": "2026-09-05T10:22:01.645607+00:00",
+    "delta": "-₹0.02"
+  },
+  {
+    "case_key": "079593718587",
+    "scope": "settlement",
+    "family": "bank_credit",
+    "exception_ids": [
+      "EX-0013"
+    ],
+    "delta_paise": -51317,
+    "classification": "GST_INPUT_ROUNDING_DRIFT",
+    "confidence": "high",
+    "explanation": "The rules engine flagged a discrepancy of -₹513.17 between the books and the reconstructed net settlement. Inspecting receipt voucher RV-0006 reveals two distinct issues contributing to this difference:\n\n1. GST Input Rounding / Calculation Drift: The merchant booked GST Input Credit as ₹4.74, whereas Razorpay's actual tax on fee is ₹4.76 (a 2 paise rounding/drift difference).\n2. Bank Account Debit Amount Mismatch: More significantly, the Bank account debit booked in RV-0006 is ₹1,977.94, while the actual reconstructed net credit deposited by Razorpay into the bank is ₹2,491.11. The difference between ₹2,491.11 and ₹1,977.94 is exactly ₹513.17 (plus the 2 paise GST difference, making up the overall books-vs-settlement variance). The merchant's bookkeeping entry under-booked the bank receipt / cash inflow by ₹513.17.",
+    "evidence": [
+      "Settlement UTR: 079593718587",
+      "Voucher RV-0006 Bank debit booked: ₹1,977.94 (paise: 197,794)",
+      "Reconstructed net credit: ₹2,491.11 (paise: 249,111)",
+      "Books GST Input Credit: ₹4.74 (paise: 474)",
+      "Razorpay actual GST on fee: ₹4.76 (paise: 476)",
+      "Combined unexplained delta: -₹513.17 (paise: -51,317)"
+    ],
+    "recommended_action": "A finance controller should adjust receipt voucher RV-0006 to correct the Bank account debit from ₹1,977.94 to ₹2,491.11 (increasing the bank debit by ₹513.17) and update the GST Input Credit from ₹4.74 to ₹4.76 (an increase of ₹0.02) to reconcile the Razorpay Clearing and Bank accounts correctly.",
+    "tool_calls": [
+      {
+        "tool": "list_settlement_cycles",
+        "arguments": {},
+        "ok": true,
+        "result_summary": "{\"cycle_count\": 19, \"cycles\": [{\"settlement_utr\": \"471257795428\", \"settled_at\": \"2026-08-05T11:00:00\", \"payment_count\": 4, \"refund_count\": 0, \"net_credit\": {\"paise\": 2349248, \"formatted\": \"\\u20b923,492.48\"}}, {\"settlement_utr\": \"76738505...",
+        "duration_ms": 0.5486999871209264
+      },
+      {
+        "tool": "fetch_settlement",
+        "arguments": {
+          "settlement_utr": "079593718587"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_id\": \"setl_4veCaQ90l5Ukys\", \"settlement_utr\": \"079593718587\", \"settled_at\": \"2026-08-10T11:00:00\", \"payment_count\": 3, \"refund_count\": 0, \"gross_payments\": {\"paise\": 252234, \"formatted\": \"\\u20b92,522.34\"}, \"total_fee\": {\"pai...",
+        "duration_ms": 0.12969999806955457
+      },
+      {
+        "tool": "compute_fee_breakdown",
+        "arguments": {
+          "settlement_utr": "079593718587"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_utr\": \"079593718587\", \"gross\": {\"paise\": 252234, \"formatted\": \"\\u20b92,522.34\"}, \"total_fee\": {\"paise\": 2647, \"formatted\": \"\\u20b926.47\"}, \"total_gst_on_fee\": {\"paise\": 476, \"formatted\": \"\\u20b94.76\"}, \"blended_mdr_bps\": 104...",
+        "duration_ms": 0.16369999502785504
+      },
+      {
+        "tool": "fetch_settlement_entries",
+        "arguments": {
+          "settlement_utr": "079593718587"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_utr\": \"079593718587\", \"total_matching\": 3, \"returned\": 3, \"entries\": [{\"entity_id\": \"pay_AldOKMgwKOOUcS\", \"type\": \"payment\", \"order_id\": \"order_7G4AOkHs0GnG5m\", \"method\": \"card\", \"amount\": {\"paise\": 64570, \"formatted\": \"\\u20...",
+        "duration_ms": 0.10890001431107521
+      },
+      {
+        "tool": "fetch_ledger_entries",
+        "arguments": {
+          "settlement_utr": "079593718587"
+        },
+        "ok": true,
+        "result_summary": "{\"query\": {\"order_id\": null, \"settlement_utr\": \"079593718587\"}, \"voucher_count\": 1, \"vouchers\": [{\"voucher_id\": \"RV-0006\", \"voucher_type\": \"receipt\", \"voucher_date\": \"2026-08-10\", \"narration\": \"Razorpay settlement 079593718587\", \"order_i...",
+        "duration_ms": 0.09799998952075839
+      }
+    ],
+    "turns": 6,
+    "input_tokens": 24646,
+    "output_tokens": 671,
+    "duration_ms": 36791.82089999085,
+    "rate_limit_waits": 0,
+    "error": null,
+    "investigated_at": "2026-09-05T10:22:31.278899+00:00",
+    "delta": "-₹513.17"
+  },
+  {
+    "case_key": "594996572458",
+    "scope": "settlement",
+    "family": "bank_credit",
+    "exception_ids": [
+      "EX-0014"
+    ],
+    "delta_paise": 51317,
+    "classification": "MISSING_REFUND_IN_BOOKS",
+    "confidence": "high",
+    "explanation": "In settlement UTR 594996572458, Razorpay netted a refund of ₹513.17 against the gross payments of ₹6,468.37 (less fee and tax of ₹18.97 total), resulting in a net bank credit of ₹5,936.23. However, the merchant's receipt voucher RV-0007 booked the Bank debit as ₹6,449.40, failing to account for the ₹513.17 refund deduction. This causes a ₹513.17 discrepancy where the books overstate the bank credit relative to what Razorpay actually deposited.",
+    "evidence": [
+      "Settlement UTR 594996572458 net credit is ₹5,936.23 (gross payments ₹6,468.37 minus fee ₹16.08 minus tax ₹2.89 minus refunds ₹513.17)",
+      "Receipt voucher RV-0007 booked Bank debit of ₹6,449.40, which equals gross payments ₹6,468.37 minus fee ₹16.08 minus tax ₹2.89, completely omitting the ₹513.17 refund netted in this settlement cycle",
+      "Settlement entries show refund rfnd_Qh6yYTWmE4lBYO of ₹513.17 was settled in UTR 594996572458"
+    ],
+    "recommended_action": "Adjust receipt voucher RV-0007 (or post a separate journal voucher) to credit Bank by ₹513.17 and debit the appropriate Refund / Returns / Clearing account by ₹513.17 to reconcile the bank credit with Razorpay's actual net deposit.",
+    "tool_calls": [
+      {
+        "tool": "list_settlement_cycles",
+        "arguments": {},
+        "ok": true,
+        "result_summary": "{\"cycle_count\": 19, \"cycles\": [{\"settlement_utr\": \"471257795428\", \"settled_at\": \"2026-08-05T11:00:00\", \"payment_count\": 4, \"refund_count\": 0, \"net_credit\": {\"paise\": 2349248, \"formatted\": \"\\u20b923,492.48\"}}, {\"settlement_utr\": \"76738505...",
+        "duration_ms": 0.5984000163152814
+      },
+      {
+        "tool": "fetch_settlement",
+        "arguments": {
+          "settlement_utr": "594996572458"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_id\": \"setl_BI6O3jz9MNfZZd\", \"settlement_utr\": \"594996572458\", \"settled_at\": \"2026-08-11T11:00:00\", \"payment_count\": 4, \"refund_count\": 1, \"gross_payments\": {\"paise\": 646837, \"formatted\": \"\\u20b96,468.37\"}, \"total_fee\": {\"pai...",
+        "duration_ms": 0.16679998952895403
+      },
+      {
+        "tool": "fetch_settlement_entries",
+        "arguments": {
+          "settlement_utr": "594996572458"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_utr\": \"594996572458\", \"total_matching\": 5, \"returned\": 5, \"entries\": [{\"entity_id\": \"rfnd_Qh6yYTWmE4lBYO\", \"type\": \"refund\", \"order_id\": \"order_wCZ7Uw9xfogoEm\", \"method\": \"card\", \"amount\": {\"paise\": 51317, \"formatted\": \"\\u20...",
+        "duration_ms": 0.33420001273043454
+      },
+      {
+        "tool": "fetch_ledger_entries",
+        "arguments": {
+          "settlement_utr": "594996572458"
+        },
+        "ok": true,
+        "result_summary": "{\"query\": {\"order_id\": null, \"settlement_utr\": \"594996572458\"}, \"voucher_count\": 1, \"vouchers\": [{\"voucher_id\": \"RV-0007\", \"voucher_type\": \"receipt\", \"voucher_date\": \"2026-08-11\", \"narration\": \"Razorpay settlement 594996572458\", \"order_i...",
+        "duration_ms": 0.15499998698942363
+      }
+    ],
+    "turns": 5,
+    "input_tokens": 20228,
+    "output_tokens": 551,
+    "duration_ms": 29626.236400014022,
+    "rate_limit_waits": 0,
+    "error": null,
+    "investigated_at": "2026-09-05T10:23:08.070159+00:00",
+    "delta": "₹513.17"
+  },
+  {
+    "case_key": "291244498513",
+    "scope": "settlement",
+    "family": "fee_and_gst",
+    "exception_ids": [
+      "EX-0015",
+      "EX-0016"
+    ],
+    "delta_paise": 25783,
+    "classification": "AGGREGATE_FEE_MISMATCH",
+    "confidence": "high",
+    "explanation": "In settlement UTR 291244498513 (Receipt Voucher RV-0019), the merchant incorrectly booked Payment Gateway Charges of ₹271.42 and GST Input Credit of ₹48.86. The actual gateway fees charged by Razorpay were ₹52.92 and GST was ₹9.53. The discrepancy arises because the merchant booked gateway fees and GST at an assumed flat rate across all transactions rather than computing actual per-method MDR (where UPI transactions carry 0% MDR and card transactions carry 2% MDR), leading to overbooked expense and tax credit.",
+    "evidence": [
+      "Settlement UTR 291244498513 Receipt Voucher RV-0019 booked Gateway Fee at ₹271.42 and GST Input Credit at ₹48.86",
+      "Actual Razorpay fee charged was ₹52.92 across 5 payments (1 card at ₹52.92, 4 UPI payments at ₹0.00) and actual GST on fee was ₹9.53",
+      "The merchant booked fees assuming an incorrect flat/high rate across all payments instead of accounting for zero-rated UPI transactions and actual per-method MDR (blended MDR 34.12 bps)"
+    ],
+    "recommended_action": "Pass a journal voucher to correct the overbooked Payment Gateway Charges and GST Input Credit in the books for receipt voucher RV-0019 to match the actual settlement breakdown (reduce Gateway Fee expense by ₹218.50 and GST Input Credit by ₹39.33).",
+    "tool_calls": [
+      {
+        "tool": "list_settlement_cycles",
+        "arguments": {},
+        "ok": true,
+        "result_summary": "{\"cycle_count\": 19, \"cycles\": [{\"settlement_utr\": \"471257795428\", \"settled_at\": \"2026-08-05T11:00:00\", \"payment_count\": 4, \"refund_count\": 0, \"net_credit\": {\"paise\": 2349248, \"formatted\": \"\\u20b923,492.48\"}}, {\"settlement_utr\": \"76738505...",
+        "duration_ms": 0.5024999845772982
+      },
+      {
+        "tool": "fetch_settlement",
+        "arguments": {
+          "settlement_utr": "291244498513"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_id\": \"setl_jina43QDzCzKXt\", \"settlement_utr\": \"291244498513\", \"settled_at\": \"2026-08-23T11:00:00\", \"payment_count\": 5, \"refund_count\": 0, \"gross_payments\": {\"paise\": 1550975, \"formatted\": \"\\u20b915,509.75\"}, \"total_fee\": {\"p...",
+        "duration_ms": 0.149200001033023
+      },
+      {
+        "tool": "compute_fee_breakdown",
+        "arguments": {
+          "settlement_utr": "291244498513"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_utr\": \"291244498513\", \"gross\": {\"paise\": 1550975, \"formatted\": \"\\u20b915,509.75\"}, \"total_fee\": {\"paise\": 5292, \"formatted\": \"\\u20b952.92\"}, \"total_gst_on_fee\": {\"paise\": 953, \"formatted\": \"\\u20b99.53\"}, \"blended_mdr_bps\": 3...",
+        "duration_ms": 0.1815000141505152
+      },
+      {
+        "tool": "fetch_settlement_entries",
+        "arguments": {
+          "settlement_utr": "291244498513"
+        },
+        "ok": true,
+        "result_summary": "{\"settlement_utr\": \"291244498513\", \"total_matching\": 5, \"returned\": 5, \"entries\": [{\"entity_id\": \"pay_h5Jmtf7EbsDe0G\", \"type\": \"payment\", \"order_id\": \"order_RgSnRFsTHsDDDX\", \"method\": \"upi\", \"amount\": {\"paise\": 54867, \"formatted\": \"\\u20b...",
+        "duration_ms": 0.15239999629557133
+      }
+    ],
+    "turns": 5,
+    "input_tokens": 19823,
+    "output_tokens": 494,
+    "duration_ms": 30046.6688000015,
+    "rate_limit_waits": 0,
+    "error": null,
+    "investigated_at": "2026-09-05T10:23:37.694327+00:00",
+    "delta": "₹257.83"
+  }
+]

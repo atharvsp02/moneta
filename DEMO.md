@@ -13,10 +13,13 @@ valuable half-minute in the pitch.
 ## Setup (before recording)
 
 ```bash
-moneta reconcile --name dev          # produces findings + audit trail
-moneta serve --name dev              # API on :8000
-cd web && pnpm dev                   # UI on :3000
+moneta eval --name holdout --min-interval 6   # full run + score, ~5 min
+moneta serve --name holdout                   # API on :8000
+cd web && pnpm dev                            # UI on :3000
 ```
+
+Demo on **holdout**, not dev — it is the held-out set, the agent solves the cross-cycle
+case cleanly there, and "this is data the engine was never tuned on" is a stronger line.
 
 Have `.env` with `GEMINI_API_KEY` set. Open `http://localhost:3000` on the **Overview** tab.
 Have a terminal visible for the CLI moment in section 4.
@@ -42,10 +45,10 @@ Have a terminal visible for the CLI moment in section 4.
 
 Stay on **Overview**. Point at the four stat cards in order.
 
-> "124 records, 19 settlement cycles. **93.6% of value reconciled** in 0.74 milliseconds —
+> "129 records, 19 settlement cycles. **91.7% of value reconciled** in 1.4 milliseconds —
 > that's the deterministic engine, no LLM anywhere in the matching path.
 >
-> And this number here — **₹29,183 unresolved**. I want to be direct about that, because a
+> And this number here — **₹43,061 unresolved**. I want to be direct about that, because a
 > reconciliation tool that shows you 100% is a tool that's hiding something."
 
 Scroll to the exception breakdown.
@@ -75,8 +78,8 @@ Now filter to the **open** cases and point at these two rows:
 
 | Key | Delta | Rule |
 |---|---|---|
-| `079593718587` | **−₹513.17** | `booked_bank_credit_not_equal_to_reconstructed_settlement_net` |
-| `594996572458` | **+₹513.17** | `booked_bank_credit_not_equal_to_reconstructed_settlement_net` |
+| `640771585351` | **+₹5,944.24** | `booked_bank_credit_not_equal_to_reconstructed_settlement_net` |
+| `460081661474` | **−₹5,944.24** | `booked_bank_credit_not_equal_to_reconstructed_settlement_net` |
 
 > "But these two the engine could not close. It knows the *amount* is wrong on both — it
 > just can't say *why*. Two different settlements, two days apart. Same number, opposite
@@ -91,8 +94,7 @@ Now filter to the **open** cases and point at these two rows:
 Switch to **Ask Moneta**. Type this, live, do not paste a canned question:
 
 ```
-Settlement 079593718587 is short by ₹513.17 and 594996572458 is over
-by the same amount. Are these related?
+Why doesn't settlement 640771585351 match what we booked?
 ```
 
 While it runs, narrate the tool trace as it appears:
@@ -127,14 +129,18 @@ Switch to **Evaluation**.
 > never tuned on. The generator knows exactly which faults it injected, so we can score
 > against ground truth.
 >
-> **100% micro precision.** Zero unclaimed predictions — it never flagged something that
-> wasn't actually wrong. For a tool a controller acts on, a false alarm costs more than a
-> known gap."
+> **13 of 13 injected faults, correctly attributed.** Nothing missed, nothing
+> misclassified. Rules closed nine; the agent attributed the other four."
 
-Point at the per-class table, specifically the zero-recall rows.
+Point at the `AMOUNT_MISMATCH` row — 75% precision — then say this deliberately:
 
-> "And I'm showing you the rows it misses, not just the ones it gets. This panel lists every
-> miss by name and rupee impact. A held-out score with the failures removed isn't a score."
+> "And here's where it fell short. Precision is 92.9%, not 100%, because of one false
+> positive — and it's the *other half* of the case I just showed you. It solved that
+> settlement correctly, then labelled the mirror cycle a plain amount mismatch instead of
+> recognising it as the same refund. Right event, wrong label on one of its two halves.
+>
+> I'm showing you that rather than netting it away. A held-out score with the failures
+> removed isn't a score."
 
 ---
 
@@ -170,7 +176,7 @@ numbers stay on screen. **Say so out loud** — it is a better moment than a smo
 
 Have a fallback: the same cross-cycle case already investigated is visible in
 **Exceptions** → expand the row → the agent finding, evidence and tool calls are all
-rendered from `out/dev.findings.json`.
+rendered from `out/holdout.findings.json`.
 
 ---
 

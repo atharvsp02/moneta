@@ -1,7 +1,7 @@
 {
   "dataset": "holdout",
-  "run_id": "run_d1e4334915e9",
-  "agent_ran": false,
+  "run_id": "run_fe1e72246e0f",
+  "agent_ran": true,
   "agent_error": null,
   "match_rate": {
     "records_matched": 120,
@@ -13,18 +13,18 @@
   },
   "totals": {
     "injected_errors": 13,
-    "detected": 9,
-    "correctly_attributed": 9,
+    "detected": 13,
+    "correctly_attributed": 13,
     "misclassified": 0,
-    "missed": 4,
+    "missed": 0,
     "honestly_unresolved": 0,
-    "unclaimed_predictions": 0,
-    "detection_recall": 0.6923,
-    "attribution_accuracy": 0.6923,
-    "micro_precision": 1.0,
-    "micro_recall": 0.6923,
-    "macro_precision": 1.0,
-    "macro_recall": 0.5714
+    "unclaimed_predictions": 1,
+    "detection_recall": 1.0,
+    "attribution_accuracy": 1.0,
+    "micro_precision": 0.9286,
+    "micro_recall": 1.0,
+    "macro_precision": 0.9643,
+    "macro_recall": 1.0
   },
   "by_layer": {
     "rules": {
@@ -33,38 +33,38 @@
       "accuracy": 1.0
     },
     "agent": {
-      "attributed": 0,
-      "correct": 0,
-      "accuracy": null
+      "attributed": 4,
+      "correct": 4,
+      "accuracy": 1.0
     }
   },
   "per_class": {
     "AGGREGATE_FEE_MISMATCH": {
       "support": 2,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 2,
-      "precision": null,
-      "recall": 0.0,
-      "f1": null
-    },
-    "AMOUNT_MISMATCH": {
-      "support": 3,
-      "true_positives": 3,
+      "true_positives": 2,
       "false_positives": 0,
       "false_negatives": 0,
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0
     },
+    "AMOUNT_MISMATCH": {
+      "support": 3,
+      "true_positives": 3,
+      "false_positives": 1,
+      "false_negatives": 0,
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571
+    },
     "CROSS_CYCLE_REFUND": {
       "support": 1,
-      "true_positives": 0,
+      "true_positives": 1,
       "false_positives": 0,
-      "false_negatives": 1,
-      "precision": null,
-      "recall": 0.0,
-      "f1": null
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
     },
     "DUPLICATE_BOOKING": {
       "support": 2,
@@ -77,12 +77,12 @@
     },
     "GST_INPUT_ROUNDING_DRIFT": {
       "support": 1,
-      "true_positives": 0,
+      "true_positives": 1,
       "false_positives": 0,
-      "false_negatives": 1,
-      "precision": null,
-      "recall": 0.0,
-      "f1": null
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
     },
     "MISSING_IN_BOOKS": {
       "support": 2,
@@ -103,51 +103,48 @@
       "f1": 1.0
     }
   },
-  "misses": [
+  "misses": [],
+  "misclassifications": [],
+  "unclaimed_predictions": [
+    {
+      "key": "460081661474",
+      "classification": "AMOUNT_MISMATCH",
+      "source": "agent",
+      "delta": "-₹5,944.24",
+      "confidence": "high"
+    }
+  ],
+  "outcomes": [
     {
       "key": "620720614996",
       "expected": "AGGREGATE_FEE_MISMATCH",
-      "predicted": null,
-      "status": "missed",
-      "source": null,
-      "matched_on": null,
+      "predicted": "AGGREGATE_FEE_MISMATCH",
+      "status": "correct",
+      "source": "agent",
+      "matched_on": "key+class",
       "expected_impact": "₹1,458.30",
-      "predicted_delta": null
+      "predicted_delta": "₹1,458.30"
     },
     {
       "key": "331627450189",
       "expected": "AGGREGATE_FEE_MISMATCH",
-      "predicted": null,
-      "status": "missed",
-      "source": null,
-      "matched_on": null,
+      "predicted": "AGGREGATE_FEE_MISMATCH",
+      "status": "correct",
+      "source": "agent",
+      "matched_on": "key+class",
       "expected_impact": "₹26.33",
-      "predicted_delta": null
+      "predicted_delta": "₹26.33"
     },
     {
       "key": "982955232443",
       "expected": "GST_INPUT_ROUNDING_DRIFT",
-      "predicted": null,
-      "status": "missed",
-      "source": null,
-      "matched_on": null,
+      "predicted": "GST_INPUT_ROUNDING_DRIFT",
+      "status": "correct",
+      "source": "agent",
+      "matched_on": "key+class",
       "expected_impact": "-₹0.03",
-      "predicted_delta": null
+      "predicted_delta": "-₹0.03"
     },
-    {
-      "key": "order_1kA9C365MiLpOj",
-      "expected": "CROSS_CYCLE_REFUND",
-      "predicted": null,
-      "status": "missed",
-      "source": null,
-      "matched_on": null,
-      "expected_impact": "₹5,944.24",
-      "predicted_delta": null
-    }
-  ],
-  "misclassifications": [],
-  "unclaimed_predictions": [],
-  "outcomes": [
     {
       "key": "order_pCfdtRfUvmTiSV",
       "expected": "MISSING_REFUND_IN_BOOKS",
@@ -239,44 +236,14 @@
       "predicted_delta": "₹18.00"
     },
     {
-      "key": "620720614996",
-      "expected": "AGGREGATE_FEE_MISMATCH",
-      "predicted": null,
-      "status": "missed",
-      "source": null,
-      "matched_on": null,
-      "expected_impact": "₹1,458.30",
-      "predicted_delta": null
-    },
-    {
-      "key": "331627450189",
-      "expected": "AGGREGATE_FEE_MISMATCH",
-      "predicted": null,
-      "status": "missed",
-      "source": null,
-      "matched_on": null,
-      "expected_impact": "₹26.33",
-      "predicted_delta": null
-    },
-    {
-      "key": "982955232443",
-      "expected": "GST_INPUT_ROUNDING_DRIFT",
-      "predicted": null,
-      "status": "missed",
-      "source": null,
-      "matched_on": null,
-      "expected_impact": "-₹0.03",
-      "predicted_delta": null
-    },
-    {
       "key": "order_1kA9C365MiLpOj",
       "expected": "CROSS_CYCLE_REFUND",
-      "predicted": null,
-      "status": "missed",
-      "source": null,
-      "matched_on": null,
+      "predicted": "CROSS_CYCLE_REFUND",
+      "status": "correct",
+      "source": "agent",
+      "matched_on": "class",
       "expected_impact": "₹5,944.24",
-      "predicted_delta": null
+      "predicted_delta": "₹5,944.24"
     }
   ]
 }

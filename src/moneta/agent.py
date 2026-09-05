@@ -24,7 +24,7 @@ from .tools import (
     ToolRegistry,
 )
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.5-flash-lite"
 MAX_TURNS = 12
 MAX_OUTPUT_TOKENS = 8192
 MIN_REQUEST_INTERVAL_S = 4.0
@@ -280,6 +280,20 @@ def resolve_api_key() -> str | None:
     return None
 
 
+def _account_tokens(target, usage) -> None:
+    """Add one response's token usage to a Finding or Answer.
+
+    Output tokens live under `candidates_token_count`, and reasoning models report
+    thinking separately under `thoughts_token_count` — both are billed, so both count.
+    Field names have moved between SDK versions, so every read is defensive: token
+    accounting is telemetry, and losing it must never abort an investigation.
+    """
+    target.input_tokens += getattr(usage, "prompt_token_count", 0) or 0
+    target.output_tokens += (getattr(usage, "candidates_token_count", 0) or 0) + (
+        getattr(usage, "thoughts_token_count", 0) or 0
+    )
+
+
 def _bump(obj, attr: str):
     def inc() -> None:
         setattr(obj, attr, getattr(obj, attr) + 1)
@@ -389,8 +403,7 @@ class InvestigationAgent(_GeminiRunner):
 
             usage = response.usage_metadata
             if usage:
-                finding.input_tokens += usage.prompt_token_count or 0
-                finding.output_tokens += usage.response_token_count or 0
+                _account_tokens(finding, usage)
 
             if not response.candidates:
                 finding.error = "empty_response"
@@ -599,8 +612,7 @@ class QuestionAnswerer(_GeminiRunner):
 
             usage = response.usage_metadata
             if usage:
-                answer.input_tokens += usage.prompt_token_count or 0
-                answer.output_tokens += usage.response_token_count or 0
+                _account_tokens(answer, usage)
 
             if not response.candidates:
                 answer.error = "empty_response"

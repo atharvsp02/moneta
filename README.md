@@ -59,38 +59,48 @@ different seed. Reproduce with `moneta eval --name holdout`.
 | Value reconciled | ₹428,539.23 of ₹457,722.91 | **₹474,995.52 of ₹518,056.74** |
 | Runtime | 0.74 ms | **0.93 ms** (≈139,000 records/sec) |
 
-### Exception attribution vs. injected ground truth (holdout, rules layer only)
+### Exception attribution vs. injected ground truth (holdout, full system)
 
 ```
 injected errors        13
-detected                9   (69.2%)
-correctly attributed    9   (69.2%)
+detected               13   (100.0%)
+correctly attributed   13   (100.0%)
 misclassified           0
-missed entirely         4
-unclaimed predictions   0   ← nothing flagged that was not actually wrong
+missed entirely         0
+unclaimed predictions   1   <- flagged once with no injected fault behind it
 
-micro precision    100.0%     micro recall  69.2%
+micro precision  92.9%     micro recall  100.0%
+macro precision  96.4%     macro recall  100.0%
 ```
 
-| Classification | n | precision | recall | F1 |
-|---|---|---|---|---|
-| `AMOUNT_MISMATCH` | 3 | 100% | 100% | 100% |
-| `DUPLICATE_BOOKING` | 2 | 100% | 100% | 100% |
-| `MISSING_IN_BOOKS` | 2 | 100% | 100% | 100% |
-| `MISSING_REFUND_IN_BOOKS` | 2 | 100% | 100% | 100% |
-| `AGGREGATE_FEE_MISMATCH` | 2 | — | 0% | — |
-| `GST_INPUT_ROUNDING_DRIFT` | 1 | — | 0% | — |
-| `CROSS_CYCLE_REFUND` | 1 | — | 0% | — |
+| Classification | n | precision | recall | F1 | resolved by |
+|---|---|---|---|---|---|
+| `AGGREGATE_FEE_MISMATCH` | 2 | 100% | 100% | 100% | agent |
+| `AMOUNT_MISMATCH` | 3 | 75% | 100% | 85.7% | rules |
+| `CROSS_CYCLE_REFUND` | 1 | 100% | 100% | 100% | agent |
+| `DUPLICATE_BOOKING` | 2 | 100% | 100% | 100% | rules |
+| `GST_INPUT_ROUNDING_DRIFT` | 1 | 100% | 100% | 100% | agent |
+| `MISSING_IN_BOOKS` | 2 | 100% | 100% | 100% | rules |
+| `MISSING_REFUND_IN_BOOKS` | 2 | 100% | 100% | 100% | rules |
 
-**Read the bottom three rows.** Those are the settlement-scope faults the deterministic
-layer deliberately does *not* attribute — it quantifies the delta and hands the case to the
-investigation agent. Scored with the agent disabled, they count as misses. This is the
-honest deterministic floor, not the full-system number, and the table shows it rather than
-hiding it.
+Rules attributed 9 of 9 correctly. The agent attributed 4 of 4 correctly, across the three
+classes the deterministic layer deliberately leaves open. 5 agent cases, 279 s wall clock,
+122k input / 3.2k output tokens.
 
-**100% micro precision matters more than the recall figure.** Zero unclaimed predictions
-means the engine never flagged something that was not actually wrong. For a tool that a
-controller acts on, a false alarm costs more than a known gap.
+**The one false positive is the interesting number.** A cross-cycle refund shows up as two
+equal and opposite deltas on adjacent settlements. The agent solved one side correctly —
+naming the refund id, the credit note date and the settlement date — and then labelled the
+mirror side `AMOUNT_MISMATCH` instead of recognising it as the same event. Right event,
+wrong label on one of its two halves. That is what drags micro precision to 92.9%, and it
+is reported here rather than netted away.
+
+### Deterministic layer alone
+
+Running with `--no-agent` on the same held-out set: **9 of 13 detected, 100% micro
+precision, 4 missed.** Those four are exactly the settlement-scope classes above
+(`AGGREGATE_FEE_MISMATCH`, `GST_INPUT_ROUNDING_DRIFT`, `CROSS_CYCLE_REFUND`) — the engine
+quantifies the delta and refuses to attribute it. That is the floor the agent is measured
+against, and the gap between the two tables is what the agent is actually worth.
 
 ---
 
@@ -124,6 +134,11 @@ root:
 GEMINI_API_KEY=your-key-here
 ```
 
+Default model is `gemini-3.5-flash-lite`. Override with `--model`, and see what your key
+can actually reach with `moneta models` — Google retires models from new keys, and the
+free tier's per-minute quota is low enough that `--min-interval 6` is worth passing on a
+full run.
+
 **Without a key, everything deterministic still works.** The reconciliation runs, the match
 rate is computed, exceptions are classified where the rules are unambiguous, and the report
 states plainly that the agent did not run and which cases went uninvestigated. It degrades
@@ -146,7 +161,7 @@ settlement CSV + books CSV
                 │  cases it can quantify but not attribute
                 ▼
   ┌───────────────────────────┐
-  │  2. INVESTIGATION AGENT   │   Gemini + 8 read-only tools
+  │  2. INVESTIGATION AGENT   │   Gemini 3.5 Flash Lite + 8 tools
   │  finds root cause, or     │   shaped like razorpay-mcp-server
   │  says UNRESOLVED          │
   └─────────────┬─────────────┘

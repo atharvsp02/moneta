@@ -22,7 +22,7 @@ const VERIFIED = {
   runtimeMs: 0.74,
   records: 124,
   cycles: 19,
-  microPrecision: 1.0,
+  microPrecision: 0.929,
 }
 
 export function Nav() {
@@ -151,9 +151,9 @@ export function LiveStats() {
       tone: "text-foreground",
     },
     {
-      value: pct(v.microPrecision, 0),
-      label: "precision on held-out set",
-      note: "Zero false alarms against ground truth",
+      value: "13 / 13",
+      label: "held-out faults attributed",
+      note: "92.9% precision · one false positive, reported",
       tone: "text-primary",
     },
   ]
@@ -325,8 +325,8 @@ export function HardCase() {
         <div className="panel mt-7 overflow-hidden">
           <div className="divide-y divide-border">
             {[
-              { utr: "079593718587", delta: "−₹513.17", tone: "text-[hsl(var(--bad))]" },
-              { utr: "594996572458", delta: "+₹513.17", tone: "text-[hsl(var(--ok))]" },
+              { utr: "640771585351", delta: "+₹5,944.24", tone: "text-[hsl(var(--ok))]" },
+              { utr: "460081661474", delta: "−₹5,944.24", tone: "text-[hsl(var(--bad))]" },
             ].map((r) => (
               <div key={r.utr} className="flex items-center gap-4 px-5 py-3.5">
                 <span className="font-mono text-[13px] text-foreground/75">{r.utr}</span>
@@ -339,17 +339,29 @@ export function HardCase() {
           </div>
           <div className="border-t border-primary/20 bg-primary/[0.04] px-5 py-4">
             <p className="text-[11px] font-medium uppercase tracking-wider text-primary/70">
-              Moneta, after four tool calls
+              Moneta, after five tool calls — verbatim from the run
             </p>
             <p className="mt-2 text-[13px] leading-relaxed text-foreground/80">
-              The books recorded the credit note on the day the refund was{" "}
-              <strong className="font-medium">issued</strong>. Razorpay netted it out of the{" "}
-              <strong className="font-medium">following</strong> settlement cycle. One event booked
-              in two periods — which is exactly why it appears as two equal and opposite deltas.
+              Credit note <span className="font-mono text-[12px]">CN-0009</span> was recorded in
+              the books on <strong className="font-medium">2026-08-19</strong>, whereas Razorpay
+              netted refund{" "}
+              <span className="font-mono text-[12px]">rfnd_XUSPOeagAyw3vu</span> out of settlement{" "}
+              <span className="font-mono text-[12px]">640771585351</span> on{" "}
+              <strong className="font-medium">2026-08-22</strong>. One event, booked in two
+              periods.
             </p>
             <p className="mt-2.5 text-[12px] text-foreground/45">
-              It had to go <em>look</em> for where the money went. That&apos;s the part a rules
-              engine structurally cannot do.
+              It had to go <em>look</em> for where the money went — across cycles, by refund id.
+              That&apos;s the part a rules engine structurally cannot do.
+            </p>
+          </div>
+          <div className="border-t border-border bg-[hsl(var(--warn))]/[0.05] px-5 py-3.5">
+            <p className="text-[12px] leading-relaxed text-foreground/60">
+              <strong className="font-medium text-[hsl(var(--warn))]">And where it fell short:</strong>{" "}
+              it solved this side correctly but labelled the mirror cycle{" "}
+              <span className="font-mono text-[11px]">AMOUNT_MISMATCH</span> rather than recognising
+              it as the same event. Right event, wrong label on one of its two halves — the single
+              false positive in the results below.
             </p>
           </div>
         </div>
@@ -359,11 +371,15 @@ export function HardCase() {
 }
 
 export function Results() {
-  const rows = [
-    ["AMOUNT_MISMATCH", "3", "100%", "100%"],
-    ["DUPLICATE_BOOKING", "2", "100%", "100%"],
-    ["MISSING_IN_BOOKS", "2", "100%", "100%"],
-    ["MISSING_REFUND_IN_BOOKS", "2", "100%", "100%"],
+  // Verified against out/holdout.eval.json — full system, agent enabled.
+  const rows: [string, string, string, string, string][] = [
+    ["AGGREGATE_FEE_MISMATCH", "2", "100%", "100%", "agent"],
+    ["CROSS_CYCLE_REFUND", "1", "100%", "100%", "agent"],
+    ["GST_INPUT_ROUNDING_DRIFT", "1", "100%", "100%", "agent"],
+    ["DUPLICATE_BOOKING", "2", "100%", "100%", "rules"],
+    ["MISSING_IN_BOOKS", "2", "100%", "100%", "rules"],
+    ["MISSING_REFUND_IN_BOOKS", "2", "100%", "100%", "rules"],
+    ["AMOUNT_MISMATCH", "3", "75%", "100%", "rules"],
   ]
 
   return (
@@ -388,56 +404,64 @@ export function Results() {
                   <th className="th text-right">n</th>
                   <th className="th text-right">Precision</th>
                   <th className="th text-right">Recall</th>
+                  <th className="th">Resolved by</th>
                 </tr>
               </thead>
               <tbody>
-                {rows.map(([cls, n, p, r]) => (
+                {rows.map(([cls, n, p, r, by]) => (
                   <tr key={cls} className="row-hover">
                     <td className="td font-mono text-[12px]">{cls}</td>
                     <td className="td tnum text-right">{n}</td>
-                    <td className="td tnum text-right text-[hsl(var(--ok))]">{p}</td>
+                    <td
+                      className={`td tnum text-right ${p === "100%" ? "text-[hsl(var(--ok))]" : "text-[hsl(var(--warn))]"}`}
+                    >
+                      {p}
+                    </td>
                     <td className="td tnum text-right text-[hsl(var(--ok))]">{r}</td>
+                    <td className="td">
+                      <span
+                        className={`rounded border px-1.5 py-0.5 text-[10px] ${
+                          by === "agent"
+                            ? "border-primary/30 bg-primary/10 text-primary"
+                            : "border-border bg-foreground/[0.04] text-foreground/50"
+                        }`}
+                      >
+                        {by}
+                      </span>
+                    </td>
                   </tr>
                 ))}
-                <tr className="row-hover">
-                  <td className="td font-mono text-[12px] text-foreground/45">
-                    AGGREGATE_FEE_MISMATCH
-                  </td>
-                  <td className="td tnum text-right text-foreground/45">2</td>
-                  <td className="td tnum text-right text-foreground/30">—</td>
-                  <td className="td tnum text-right text-[hsl(var(--warn))]">0%</td>
-                </tr>
-                <tr className="row-hover">
-                  <td className="td font-mono text-[12px] text-foreground/45">CROSS_CYCLE_REFUND</td>
-                  <td className="td tnum text-right text-foreground/45">1</td>
-                  <td className="td tnum text-right text-foreground/30">—</td>
-                  <td className="td tnum text-right text-[hsl(var(--warn))]">0%</td>
-                </tr>
               </tbody>
             </table>
             <p className="border-t border-border px-4 py-3 text-[11px] leading-relaxed text-foreground/45">
-              The bottom two rows are the settlement-scope faults the deterministic layer
-              deliberately does <em>not</em> attribute — it quantifies the delta and hands the case
-              to the investigation agent. Scored with the agent disabled, they count as misses. This
-              is the honest deterministic floor, shown rather than trimmed.
+              The three <span className="text-primary">agent</span> rows are the settlement-scope
+              faults the deterministic layer deliberately does <em>not</em> attribute — it
+              quantifies the delta and refuses to name a cause. Run with the agent disabled, those
+              three score 0% recall and the system detects 9 of 13. That gap is what the agent is
+              actually worth.
             </p>
           </div>
 
           <div className="space-y-3 lg:col-span-2">
             <div className="panel px-5 py-5">
-              <p className="tnum text-[30px] font-semibold leading-none text-primary">100%</p>
-              <p className="mt-2 text-[13px] text-foreground/70">micro precision</p>
+              <p className="tnum text-[30px] font-semibold leading-none text-primary">13 / 13</p>
+              <p className="mt-2 text-[13px] text-foreground/70">
+                injected faults correctly attributed
+              </p>
               <p className="mt-1.5 text-[12px] leading-relaxed text-foreground/45">
-                Zero unclaimed predictions — it never flagged something that wasn&apos;t actually
-                wrong. For a tool a controller acts on, a false alarm costs more than a known gap.
+                Nothing missed, nothing misclassified. Rules closed 9, the agent attributed the
+                remaining 4 across the three classes rules deliberately leave open.
               </p>
             </div>
             <div className="panel px-5 py-5">
-              <p className="tnum text-[30px] font-semibold leading-none">9 / 13</p>
-              <p className="mt-2 text-[13px] text-foreground/70">injected faults detected</p>
+              <p className="tnum text-[30px] font-semibold leading-none text-[hsl(var(--warn))]">
+                92.9%
+              </p>
+              <p className="mt-2 text-[13px] text-foreground/70">micro precision</p>
               <p className="mt-1.5 text-[12px] leading-relaxed text-foreground/45">
-                Every one of the four misses is listed by name and rupee impact in the dashboard. A
-                held-out score with the failures removed isn&apos;t a score.
+                One false positive — the mirror half of the cross-cycle refund, labelled
+                AMOUNT_MISMATCH. We report it rather than netting it away, because a held-out score
+                with the failures removed isn&apos;t a score.
               </p>
             </div>
           </div>
