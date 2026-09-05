@@ -1,0 +1,282 @@
+{
+  "dataset": "holdout",
+  "run_id": "run_d1e4334915e9",
+  "agent_ran": false,
+  "agent_error": null,
+  "match_rate": {
+    "records_matched": 120,
+    "records_total": 129,
+    "match_rate_records": 0.9302,
+    "value_matched": "₹474,995.52",
+    "value_total": "₹518,056.74",
+    "match_rate_value": 0.9169
+  },
+  "totals": {
+    "injected_errors": 13,
+    "detected": 9,
+    "correctly_attributed": 9,
+    "misclassified": 0,
+    "missed": 4,
+    "honestly_unresolved": 0,
+    "unclaimed_predictions": 0,
+    "detection_recall": 0.6923,
+    "attribution_accuracy": 0.6923,
+    "micro_precision": 1.0,
+    "micro_recall": 0.6923,
+    "macro_precision": 1.0,
+    "macro_recall": 0.5714
+  },
+  "by_layer": {
+    "rules": {
+      "attributed": 9,
+      "correct": 9,
+      "accuracy": 1.0
+    },
+    "agent": {
+      "attributed": 0,
+      "correct": 0,
+      "accuracy": null
+    }
+  },
+  "per_class": {
+    "AGGREGATE_FEE_MISMATCH": {
+      "support": 2,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null
+    },
+    "AMOUNT_MISMATCH": {
+      "support": 3,
+      "true_positives": 3,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "CROSS_CYCLE_REFUND": {
+      "support": 1,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null
+    },
+    "DUPLICATE_BOOKING": {
+      "support": 2,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "GST_INPUT_ROUNDING_DRIFT": {
+      "support": 1,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null
+    },
+    "MISSING_IN_BOOKS": {
+      "support": 2,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "MISSING_REFUND_IN_BOOKS": {
+      "support": 2,
+      "true_positives": 2,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "misses": [
+    {
+      "key": "620720614996",
+      "expected": "AGGREGATE_FEE_MISMATCH",
+      "predicted": null,
+      "status": "missed",
+      "source": null,
+      "matched_on": null,
+      "expected_impact": "₹1,458.30",
+      "predicted_delta": null
+    },
+    {
+      "key": "331627450189",
+      "expected": "AGGREGATE_FEE_MISMATCH",
+      "predicted": null,
+      "status": "missed",
+      "source": null,
+      "matched_on": null,
+      "expected_impact": "₹26.33",
+      "predicted_delta": null
+    },
+    {
+      "key": "982955232443",
+      "expected": "GST_INPUT_ROUNDING_DRIFT",
+      "predicted": null,
+      "status": "missed",
+      "source": null,
+      "matched_on": null,
+      "expected_impact": "-₹0.03",
+      "predicted_delta": null
+    },
+    {
+      "key": "order_1kA9C365MiLpOj",
+      "expected": "CROSS_CYCLE_REFUND",
+      "predicted": null,
+      "status": "missed",
+      "source": null,
+      "matched_on": null,
+      "expected_impact": "₹5,944.24",
+      "predicted_delta": null
+    }
+  ],
+  "misclassifications": [],
+  "unclaimed_predictions": [],
+  "outcomes": [
+    {
+      "key": "order_pCfdtRfUvmTiSV",
+      "expected": "MISSING_REFUND_IN_BOOKS",
+      "predicted": "MISSING_REFUND_IN_BOOKS",
+      "status": "correct",
+      "source": "rules",
+      "matched_on": "key+class",
+      "expected_impact": "₹2,044.73",
+      "predicted_delta": "₹2,044.73"
+    },
+    {
+      "key": "order_yBSo89c9nj37Da",
+      "expected": "MISSING_REFUND_IN_BOOKS",
+      "predicted": "MISSING_REFUND_IN_BOOKS",
+      "status": "correct",
+      "source": "rules",
+      "matched_on": "key+class",
+      "expected_impact": "₹4,329.70",
+      "predicted_delta": "₹4,329.70"
+    },
+    {
+      "key": "order_AhplwTFR9efs8v",
+      "expected": "DUPLICATE_BOOKING",
+      "predicted": "DUPLICATE_BOOKING",
+      "status": "correct",
+      "source": "rules",
+      "matched_on": "key+class",
+      "expected_impact": "₹1,076.48",
+      "predicted_delta": "₹1,076.48"
+    },
+    {
+      "key": "order_vO9WY99BudnK8j",
+      "expected": "DUPLICATE_BOOKING",
+      "predicted": "DUPLICATE_BOOKING",
+      "status": "correct",
+      "source": "rules",
+      "matched_on": "key+class",
+      "expected_impact": "₹6,741.97",
+      "predicted_delta": "₹6,741.97"
+    },
+    {
+      "key": "order_xCM7WDsXqWo4sS",
+      "expected": "MISSING_IN_BOOKS",
+      "predicted": "MISSING_IN_BOOKS",
+      "status": "correct",
+      "source": "rules",
+      "matched_on": "key+class",
+      "expected_impact": "₹917.89",
+      "predicted_delta": "₹917.89"
+    },
+    {
+      "key": "order_QqoipbJjFdMUix",
+      "expected": "MISSING_IN_BOOKS",
+      "predicted": "MISSING_IN_BOOKS",
+      "status": "correct",
+      "source": "rules",
+      "matched_on": "key+class",
+      "expected_impact": "₹20,980.81",
+      "predicted_delta": "₹20,980.81"
+    },
+    {
+      "key": "order_COjDOjRy2gpY2w",
+      "expected": "AMOUNT_MISMATCH",
+      "predicted": "AMOUNT_MISMATCH",
+      "status": "correct",
+      "source": "rules",
+      "matched_on": "key+class",
+      "expected_impact": "-₹2.70",
+      "predicted_delta": "-₹2.70"
+    },
+    {
+      "key": "order_1WqD4kFOYeY4qw",
+      "expected": "AMOUNT_MISMATCH",
+      "predicted": "AMOUNT_MISMATCH",
+      "status": "correct",
+      "source": "rules",
+      "matched_on": "key+class",
+      "expected_impact": "₹7,200.00",
+      "predicted_delta": "₹7,200.00"
+    },
+    {
+      "key": "order_4cwHLUQgmCY9WA",
+      "expected": "AMOUNT_MISMATCH",
+      "predicted": "AMOUNT_MISMATCH",
+      "status": "correct",
+      "source": "rules",
+      "matched_on": "key+class",
+      "expected_impact": "₹18.00",
+      "predicted_delta": "₹18.00"
+    },
+    {
+      "key": "620720614996",
+      "expected": "AGGREGATE_FEE_MISMATCH",
+      "predicted": null,
+      "status": "missed",
+      "source": null,
+      "matched_on": null,
+      "expected_impact": "₹1,458.30",
+      "predicted_delta": null
+    },
+    {
+      "key": "331627450189",
+      "expected": "AGGREGATE_FEE_MISMATCH",
+      "predicted": null,
+      "status": "missed",
+      "source": null,
+      "matched_on": null,
+      "expected_impact": "₹26.33",
+      "predicted_delta": null
+    },
+    {
+      "key": "982955232443",
+      "expected": "GST_INPUT_ROUNDING_DRIFT",
+      "predicted": null,
+      "status": "missed",
+      "source": null,
+      "matched_on": null,
+      "expected_impact": "-₹0.03",
+      "predicted_delta": null
+    },
+    {
+      "key": "order_1kA9C365MiLpOj",
+      "expected": "CROSS_CYCLE_REFUND",
+      "predicted": null,
+      "status": "missed",
+      "source": null,
+      "matched_on": null,
+      "expected_impact": "₹5,944.24",
+      "predicted_delta": null
+    }
+  ]
+}

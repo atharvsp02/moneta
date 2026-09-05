@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base surface — carried over from the template's dark palette. */
+    --background: 210 11% 7%; /* #0f1211 */
+    --foreground: 160 14% 93%; /* #e7eceb */
+
+    --muted: 240 2% 16%;
+    --muted-foreground: 160 14% 93% / 0.7;
+    --muted-foreground-light: 160 14% 93% / 0.5;
+    --muted-foreground-dark: 160 14% 93% / 0.6;
+
+    --card: 220 17% 98% / 0.02;
+    --card-foreground: 160 14% 93%;
+
+    --popover: 210 11% 9%;
+    --popover-foreground: 160 14% 93%;
+
+    --primary: 165 96% 71%; /* #78fcd6 */
+    --primary-foreground: 160 8% 6%;
+    --primary-dark: 160 100% 50%;
+    --primary-light: 160 48% 87%;
+
+    --secondary: 160 14% 93%;
+    --secondary-foreground: 165 14% 8%;
+
+    --accent: 240 2% 25%;
+    --accent-foreground: 240 2% 96%;
+
+    --destructive: 0 72% 62%;
+    --destructive-foreground: 160 14% 93%;
+
+    --border: 240 100% 100% / 0.08;
+    --border-light: 210 17% 6% / 0.1;
+    --border-dark: 210 17% 6% / 0.05;
+
+    --ring: 165 96% 71%;
+    --radius: 0.5rem;
+
+    /* Reconciliation semantics. Money that is accounted for reads mint; money that
+       is not reads amber or red. Nothing decorative uses these three. */
+    --ok: 160 84% 55%;
+    --warn: 38 95% 62%;
+    --bad: 0 78% 66%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04";
+  }
+  /* Ids, amounts and deltas are compared column-to-column constantly in this UI,
+     so they are set in tabular figures to keep digits vertically aligned. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-border bg-card backdrop-blur-sm;
+  }
+  .panel-header {
+    @apply flex items-start justify-between gap-4 border-b border-border px-5 py-4;
+  }
+  .panel-title {
+    @apply text-sm font-medium text-foreground;
+  }
+  .panel-subtitle {
+    @apply mt-0.5 text-xs leading-relaxed text-foreground/50;
+  }
+  .th {
+    @apply sticky top-0 z-10 whitespace-nowrap bg-background/95 px-4 py-2.5 text-left
+           text-[11px] font-medium uppercase tracking-wider text-foreground/45 backdrop-blur;
+  }
+  .td {
+    @apply whitespace-nowrap px-4 py-2.5 text-[13px] text-foreground/80;
+  }
+  .row-hover {
+    @apply border-t border-border/60 transition-colors hover:bg-foreground/[0.03];
+  }
+}
+
+/* Scrollbars — the default light thumb is jarring against this background. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(231, 236, 235, 0.12);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(231, 236, 235, 0.22);
+  background-clip: content-box;
+}
