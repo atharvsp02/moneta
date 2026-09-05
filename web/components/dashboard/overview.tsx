@@ -138,9 +138,12 @@ function ExceptionBreakdown({
 function ResolutionSplit({ summary }: { summary: Summary }) {
   const e = summary.exceptions
   const total = Math.max(e.total, 1)
+  // The API returns these four as a partition of `total`, so the bar always sums to
+  // the number of exceptions that actually exist — an exception the agent has already
+  // investigated is no longer awaiting investigation.
   const segments = [
     { label: "Closed by rules", n: e.closed_by_rules, color: "#78fcd6" },
-    { label: "Attributed by agent", n: Math.max(e.investigated - e.unresolved, 0), color: "#38bdf8" },
+    { label: "Attributed by agent", n: e.attributed_by_agent, color: "#38bdf8" },
     { label: "Honestly unresolved", n: e.unresolved, color: "#ef4444" },
     { label: "Awaiting agent", n: e.open_for_agent, color: "#94a3b8" },
   ].filter((seg) => seg.n > 0)

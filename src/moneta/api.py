@@ -185,23 +185,39 @@ def health() -> dict:
 def summary() -> dict:
     t = state.recon.totals
     c = state.recon.clearing
+    # Each exception is counted exactly once, under whichever layer actually resolved
+    # it. An exception the agent has investigated is no longer awaiting investigation,
+    # so attributing it to both would inflate the totals past the number of exceptions
+    # that exist.
+    finding_for: dict[str, object] = {}
+    for f in state.findings:
+        for eid in f.exception_ids:
+            finding_for[eid] = f
+
     breakdown: dict[str, dict] = {}
+    closed_by_rules = attributed_by_agent = unresolved = awaiting = 0
+
     for d in state.recon.discrepancies:
-        cls = d.classification or "OPEN_FOR_INVESTIGATION"
+        finding = finding_for.get(d.exception_id)
+        if d.classification:
+            cls, resolved_by = d.classification, "rules"
+            closed_by_rules += 1
+        elif finding is not None:
+            cls, resolved_by = finding.classification, "agent"
+            if cls == "UNRESOLVED":
+                unresolved += 1
+            else:
+                attributed_by_agent += 1
+        else:
+            cls, resolved_by = "OPEN_FOR_INVESTIGATION", "pending"
+            awaiting += 1
+
         row = breakdown.setdefault(
-            cls, {"category": cls, "count": 0, "value_paise": 0, "resolved_by": "rules"}
+            cls, {"category": cls, "count": 0, "value_paise": 0, "resolved_by": resolved_by}
         )
         row["count"] += 1
         row["value_paise"] += abs(d.delta_paise)
-    for f in state.findings:
-        if f.classification in breakdown:
-            continue
-        row = breakdown.setdefault(
-            f.classification,
-            {"category": f.classification, "count": 0, "value_paise": 0, "resolved_by": "agent"},
-        )
-        row["count"] += 1
-        row["value_paise"] += abs(f.delta_paise)
+
     for row in breakdown.values():
         row["value"] = rupees(row["value_paise"])
 
@@ -218,12 +234,14 @@ def summary() -> dict:
             "value_unresolved": rupees(t["value_total_paise"] - t["value_matched_paise"]),
             "match_rate_value": t["match_rate_value"],
         },
+        # These four are a partition of `total`, so the dashboard can show them as one bar.
         "exceptions": {
             "total": t["discrepancies_total"],
-            "closed_by_rules": t["resolved_by_rules"],
-            "open_for_agent": t["open_for_agent"],
-            "investigated": len(state.findings),
-            "unresolved": sum(1 for f in state.findings if f.classification == "UNRESOLVED"),
+            "closed_by_rules": closed_by_rules,
+            "attributed_by_agent": attributed_by_agent,
+            "unresolved": unresolved,
+            "open_for_agent": awaiting,
+            "investigated": attributed_by_agent + unresolved,
             "breakdown": sorted(breakdown.values(), key=lambda r: -r["value_paise"]),
         },
         "timing": {

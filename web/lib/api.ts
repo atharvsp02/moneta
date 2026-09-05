@@ -37,9 +37,10 @@ export type Summary = {
   exceptions: {
     total: number
     closed_by_rules: number
+    attributed_by_agent: number
+    unresolved: number
     open_for_agent: number
     investigated: number
-    unresolved: number
     breakdown: {
       category: string
       count: number
