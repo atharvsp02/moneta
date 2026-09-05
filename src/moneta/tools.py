@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .engine import Reconciliation
 from .money import bps_of, gst_on, rupees
@@ -53,6 +53,7 @@ def _voucher_view(v) -> dict:
 class ToolContext:
     dataset: Dataset
     recon: Reconciliation
+    findings: list = field(default_factory=list)
 
 
 class ToolRegistry:
@@ -67,6 +68,9 @@ class ToolRegistry:
             "search_settlement_entries_by_amount": self.search_settlement_entries_by_amount,
             "compute_fee_breakdown": self.compute_fee_breakdown,
             "list_settlement_cycles": self.list_settlement_cycles,
+            "get_reconciliation_summary": self.get_reconciliation_summary,
+            "lookup_order_status": self.lookup_order_status,
+            "list_exceptions": self.list_exceptions,
         }
 
     @property
@@ -268,6 +272,93 @@ class ToolRegistry:
         return {"cycle_count": len(out), "cycles": out}
 
 
+    # --- Tools that read the finished reconciliation rather than the raw data. -------
+    # These let the Q&A layer answer "what happened in this run" without the model
+    # having to re-derive a verdict the deterministic engine already reached.
+
+    def get_reconciliation_summary(self) -> dict:
+        recon = self.ctx.recon
+        t = recon.totals
+        return {
+            "records_total": t["records_total"],
+            "records_matched": t["records_matched"],
+            "match_rate_records": t["match_rate_records"],
+            "value_total": _money(t["value_total_paise"]),
+            "value_matched": _money(t["value_matched_paise"]),
+            "match_rate_value": t["match_rate_value"],
+            "exceptions_total": t["discrepancies_total"],
+            "closed_by_rules": t["resolved_by_rules"],
+            "open_for_agent": t["open_for_agent"],
+            "unsettled_records": t["unsettled_records"],
+            "unsettled_value": _money(t["unsettled_value_paise"]),
+            "clearing_account": {
+                "actual": _money(recon.clearing["actual_paise"]),
+                "explained_by_timing": _money(recon.clearing["expected_timing_paise"]),
+                "unexplained": _money(recon.clearing["unexplained_paise"]),
+            },
+            "settlement_cycles_checked": len(recon.settlement_checks),
+        }
+
+    def lookup_order_status(self, order_id: str) -> dict:
+        recon = self.ctx.recon
+        matches = [m for m in recon.order_matches if m.order_id == order_id]
+        if not matches:
+            raise ToolError(
+                f"no settlement row was reconciled under order_id '{order_id}'. It may exist "
+                f"only in the books, or the id may be wrong."
+            )
+        related = [d for d in recon.discrepancies if d.key == order_id]
+        findings = [f for f in self.ctx.findings if f.case_key == order_id]
+        return {
+            "order_id": order_id,
+            "reconciliation_result": [
+                {
+                    "entry_type": m.entry_type,
+                    "entity_id": m.entity_id,
+                    "matched": m.matched,
+                    "settled": m.settled,
+                    "settlement_amount": _money(m.settlement_amount),
+                    "books_amount": _money(m.books_amount) if m.books_amount is not None else None,
+                    "reason": m.reason,
+                }
+                for m in matches
+            ],
+            "exceptions_raised": [d.to_dict() for d in related],
+            "agent_findings": [
+                {
+                    "classification": f.classification,
+                    "confidence": f.confidence,
+                    "explanation": f.explanation,
+                    "evidence": f.evidence,
+                    "recommended_action": f.recommended_action,
+                }
+                for f in findings
+            ],
+        }
+
+    def list_exceptions(self, classification: str | None = None, limit: int = 25) -> dict:
+        rows = list(self.ctx.recon.discrepancies)
+        if classification:
+            rows = [d for d in rows if (d.classification or "OPEN") == classification]
+        rows.sort(key=lambda d: -abs(d.delta_paise))
+        return {
+            "filter": {"classification": classification},
+            "total_matching": len(rows),
+            "returned": min(len(rows), limit),
+            "exceptions": [
+                {
+                    "exception_id": d.exception_id,
+                    "scope": d.scope,
+                    "key": d.key,
+                    "delta": _money(d.delta_paise),
+                    "rule": d.rule,
+                    "classification": d.classification or "OPEN_FOR_INVESTIGATION",
+                }
+                for d in rows[:limit]
+            ],
+        }
+
+
 TOOL_DEFINITIONS = [
     {
         "name": "fetch_settlement",
@@ -377,5 +468,54 @@ TOOL_DEFINITIONS = [
         "name": "list_settlement_cycles",
         "description": "List every settlement cycle with its date, entry counts and net credit.",
         "input_schema": {"type": "object", "properties": {}, "additionalProperties": False},
+    },
+]
+
+
+# Declarations for the tools that read the finished reconciliation. The investigation
+# agent deliberately does not get these: it is asked to attribute a cause from primary
+# evidence, and handing it the engine's own verdict invites it to restate that instead
+# of investigating. The Q&A layer, which answers questions *about* a completed run,
+# gets both lists.
+RECON_TOOL_DEFINITIONS = [
+    {
+        "name": "get_reconciliation_summary",
+        "description": (
+            "Headline numbers for the completed reconciliation run: match rate by record and by "
+            "value, exception counts, unsettled timing balance, and the clearing account position. "
+            "Use this for any question about overall results."
+        ),
+        "input_schema": {"type": "object", "properties": {}, "additionalProperties": False},
+    },
+    {
+        "name": "lookup_order_status",
+        "description": (
+            "The reconciliation verdict for one order: whether it matched, the settled amount "
+            "versus the amount in the books, every exception raised against it, and any "
+            "investigation finding already recorded. Start here for 'why doesn't order X match'."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {"order_id": {"type": "string"}},
+            "required": ["order_id"],
+            "additionalProperties": False,
+        },
+        "strict": True,
+    },
+    {
+        "name": "list_exceptions",
+        "description": (
+            "List exceptions raised in this run, largest absolute delta first, optionally filtered "
+            "to one classification. Pass 'OPEN_FOR_INVESTIGATION' to see cases the rules engine "
+            "quantified but could not attribute."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "classification": {"type": "string"},
+                "limit": {"type": "integer"},
+            },
+            "additionalProperties": False,
+        },
     },
 ]

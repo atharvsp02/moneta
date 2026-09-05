@@ -16,7 +16,13 @@ from google.genai import types
 from .engine import Discrepancy, ExceptionClass, Reconciliation
 from .money import rupees
 from .schema import Dataset
-from .tools import TOOL_DEFINITIONS, ToolContext, ToolError, ToolRegistry
+from .tools import (
+    RECON_TOOL_DEFINITIONS,
+    TOOL_DEFINITIONS,
+    ToolContext,
+    ToolError,
+    ToolRegistry,
+)
 
 MODEL = "gemini-2.5-flash"
 MAX_TURNS = 12
@@ -120,9 +126,9 @@ def _strip_unsupported(schema: dict) -> dict:
     return cleaned
 
 
-def build_function_declarations() -> list[types.FunctionDeclaration]:
+def build_function_declarations(specs: list[dict] | None = None) -> list[types.FunctionDeclaration]:
     declarations = []
-    for spec in TOOL_DEFINITIONS + [SUBMIT_FINDING]:
+    for spec in specs if specs is not None else TOOL_DEFINITIONS + [SUBMIT_FINDING]:
         declarations.append(
             types.FunctionDeclaration(
                 name=spec["name"],
@@ -274,7 +280,59 @@ def resolve_api_key() -> str | None:
     return None
 
 
-class InvestigationAgent:
+def _bump(obj, attr: str):
+    def inc() -> None:
+        setattr(obj, attr, getattr(obj, attr) + 1)
+
+    return inc
+
+
+def make_client(client: genai.Client | None = None) -> genai.Client:
+    if client is not None:
+        return client
+    api_key = resolve_api_key()
+    if not api_key:
+        raise RuntimeError(
+            "No Gemini API key found. Set GEMINI_API_KEY (or GOOGLE_API_KEY). "
+            "The deterministic engine runs without it; the investigation agent needs it."
+        )
+    return genai.Client(api_key=api_key)
+
+
+class _GeminiRunner:
+    """Shared transport: one client, one rate limiter, retry on 429 and 5xx."""
+
+    def __init__(
+        self,
+        model: str = MODEL,
+        client: genai.Client | None = None,
+        min_request_interval_s: float = MIN_REQUEST_INTERVAL_S,
+    ):
+        self.client = make_client(client)
+        self.model = model
+        self.limiter = RateLimiter(min_request_interval_s)
+
+    def _generate(self, contents: list[types.Content], config, on_wait=None):
+        for attempt in range(MAX_RATE_LIMIT_RETRIES):
+            self.limiter.wait()
+            try:
+                return self.client.models.generate_content(
+                    model=self.model, contents=contents, config=config
+                )
+            except genai_errors.ClientError as exc:
+                if getattr(exc, "status", None) == "RESOURCE_EXHAUSTED" or "429" in str(exc):
+                    if on_wait:
+                        on_wait()
+                    self.limiter.backoff(attempt)
+                    continue
+                raise
+            except genai_errors.ServerError:
+                self.limiter.backoff(attempt)
+                continue
+        raise genai_errors.APIError("rate limit retries exhausted", {})
+
+
+class InvestigationAgent(_GeminiRunner):
     def __init__(
         self,
         dataset: Dataset,
@@ -283,19 +341,9 @@ class InvestigationAgent:
         client: genai.Client | None = None,
         min_request_interval_s: float = MIN_REQUEST_INTERVAL_S,
     ):
-        if client is None:
-            api_key = resolve_api_key()
-            if not api_key:
-                raise RuntimeError(
-                    "No Gemini API key found. Set GEMINI_API_KEY (or GOOGLE_API_KEY). "
-                    "The deterministic engine runs without it; the investigation agent needs it."
-                )
-            client = genai.Client(api_key=api_key)
-        self.client = client
-        self.model = model
+        super().__init__(model=model, client=client, min_request_interval_s=min_request_interval_s)
         self.registry = ToolRegistry(ToolContext(dataset, recon))
         self.tools = [types.Tool(function_declarations=build_function_declarations())]
-        self.limiter = RateLimiter(min_request_interval_s)
 
     def _config(self) -> types.GenerateContentConfig:
         return types.GenerateContentConfig(
@@ -305,24 +353,6 @@ class InvestigationAgent:
             max_output_tokens=MAX_OUTPUT_TOKENS,
             temperature=0.0,
         )
-
-    def _generate(self, contents: list[types.Content], finding: Finding):
-        for attempt in range(MAX_RATE_LIMIT_RETRIES):
-            self.limiter.wait()
-            try:
-                return self.client.models.generate_content(
-                    model=self.model, contents=contents, config=self._config()
-                )
-            except genai_errors.ClientError as exc:
-                if getattr(exc, "status", None) == "RESOURCE_EXHAUSTED" or "429" in str(exc):
-                    finding.rate_limit_waits += 1
-                    self.limiter.backoff(attempt)
-                    continue
-                raise
-            except genai_errors.ServerError:
-                self.limiter.backoff(attempt)
-                continue
-        raise genai_errors.APIError("rate limit retries exhausted", {})
 
     def investigate(self, case: Case) -> Finding:
         started = time.perf_counter()
@@ -346,7 +376,9 @@ class InvestigationAgent:
         for turn in range(MAX_TURNS):
             finding.turns = turn + 1
             try:
-                response = self._generate(contents, finding)
+                response = self._generate(
+                    contents, self._config(), on_wait=_bump(finding, "rate_limit_waits")
+                )
             except genai_errors.APIError as exc:
                 finding.error = f"{type(exc).__name__}: {exc}"
                 finding.explanation = (
@@ -454,3 +486,171 @@ class InvestigationAgent:
                 progress(i, len(cases), case)
             findings.append(self.investigate(case))
         return findings
+
+
+# --------------------------------------------------------------------------------------
+# Q&A layer — answering a controller's questions about a completed reconciliation run.
+# --------------------------------------------------------------------------------------
+
+QA_MAX_TURNS = 10
+
+QA_SYSTEM_PROMPT = """You are Moneta, a settlement reconciliation analyst answering questions from a finance controller at an Indian merchant that collects payments through Razorpay.
+
+A reconciliation run has already completed. It matched the merchant's own books against Razorpay's settlement data, reconstructing every settlement as:
+
+    net bank credit = gross payments - MDR fee - GST on fee - refunds netted
+
+The controller is now asking you about that run. Answer from the run, using tools.
+
+Rules you must follow:
+
+1. Every number you state must come from a tool result. Never do arithmetic yourself and never quote a figure from memory. You are talking about money to someone who will act on what you say. `compute_fee_breakdown` exists so you never have to compute a fee, a blended rate or a GST figure yourself.
+
+2. Look it up before you answer. For a question about one order, call `lookup_order_status` first — it returns the engine's actual verdict, the amounts on both sides, and any investigation finding already on file. For a question about overall results, call `get_reconciliation_summary`. Then pull primary evidence (`fetch_payment`, `fetch_settlement`, `fetch_ledger_entries`, `fetch_refunds_for_order`) to show your working.
+
+3. If the tools do not answer the question, say so plainly and say what you checked. A confident wrong answer about a reconciliation is worse than "I could not determine this from the run" — someone will act on it.
+
+4. You are read-only and bounded by design. You cannot edit the ledger, post a journal entry, or move money, and you must not imply otherwise. Where a fix is needed, describe what a human should do.
+
+Answer style: lead with the direct answer in one or two sentences, then the evidence that supports it with specific ids and amounts. Use the rupee amounts exactly as the tools format them. Be concise — this is a working answer for a controller mid-task, not a report."""
+
+
+@dataclass
+class Answer:
+    question: str
+    answer: str
+    tool_calls: list[ToolCallRecord] = field(default_factory=list)
+    turns: int = 0
+    input_tokens: int = 0
+    output_tokens: int = 0
+    duration_ms: float = 0.0
+    rate_limit_waits: int = 0
+    error: str | None = None
+    answered_at: str = ""
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+
+class QuestionAnswerer(_GeminiRunner):
+    """Conversational layer over a finished run.
+
+    Holds no state between calls beyond what the caller passes back as `history`, so one
+    instance can serve many independent chat sessions.
+    """
+
+    def __init__(
+        self,
+        dataset: Dataset,
+        recon: Reconciliation,
+        findings: list[Finding] | None = None,
+        model: str = MODEL,
+        client: genai.Client | None = None,
+        min_request_interval_s: float = MIN_REQUEST_INTERVAL_S,
+    ):
+        super().__init__(model=model, client=client, min_request_interval_s=min_request_interval_s)
+        self.registry = ToolRegistry(ToolContext(dataset, recon, findings or []))
+        self.tools = [
+            types.Tool(
+                function_declarations=build_function_declarations(
+                    TOOL_DEFINITIONS + RECON_TOOL_DEFINITIONS
+                )
+            )
+        ]
+
+    def _config(self) -> types.GenerateContentConfig:
+        return types.GenerateContentConfig(
+            system_instruction=QA_SYSTEM_PROMPT,
+            tools=self.tools,
+            automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+            max_output_tokens=MAX_OUTPUT_TOKENS,
+            temperature=0.0,
+        )
+
+    def ask(self, question: str, history: list[dict] | None = None) -> Answer:
+        started = time.perf_counter()
+        answer = Answer(
+            question=question,
+            answer="",
+            answered_at=datetime.now(timezone.utc).isoformat(),
+        )
+
+        contents: list[types.Content] = []
+        for prior in history or []:
+            role = "model" if prior.get("role") == "assistant" else "user"
+            text = (prior.get("content") or "").strip()
+            if text:
+                contents.append(types.Content(role=role, parts=[types.Part.from_text(text=text)]))
+        contents.append(types.Content(role="user", parts=[types.Part.from_text(text=question)]))
+
+        for turn in range(QA_MAX_TURNS):
+            answer.turns = turn + 1
+            try:
+                response = self._generate(
+                    contents, self._config(), on_wait=_bump(answer, "rate_limit_waits")
+                )
+            except genai_errors.APIError as exc:
+                answer.error = f"{type(exc).__name__}: {exc}"
+                answer.answer = (
+                    "I could not reach the model to answer this. The reconciliation data itself "
+                    "is unaffected - the numbers in the dashboard still stand."
+                )
+                break
+
+            usage = response.usage_metadata
+            if usage:
+                answer.input_tokens += usage.prompt_token_count or 0
+                answer.output_tokens += usage.response_token_count or 0
+
+            if not response.candidates:
+                answer.error = "empty_response"
+                answer.answer = "The model returned no response to this question."
+                break
+
+            candidate = response.candidates[0]
+            finish = str(getattr(candidate.finish_reason, "name", candidate.finish_reason) or "")
+            content = candidate.content
+            parts = list(content.parts) if content and content.parts else []
+            calls = [p.function_call for p in parts if p.function_call]
+            text = "".join(p.text for p in parts if p.text).strip()
+
+            if finish in TERMINAL_FINISH_REASONS and not calls and not text:
+                answer.error = f"finish_reason:{finish}"
+                answer.answer = TERMINAL_FINISH_REASONS[finish]
+                break
+
+            if content:
+                contents.append(content)
+
+            if not calls:
+                answer.answer = text or "The model stopped without producing an answer."
+                if not text:
+                    answer.error = "model_stopped_without_answering"
+                break
+
+            responses = []
+            for call in calls:
+                args = dict(call.args or {})
+                t0 = time.perf_counter()
+                try:
+                    payload, ok = self.registry.call(call.name, args), True
+                except ToolError as exc:
+                    ok, payload = False, {"error": str(exc)}
+                except Exception as exc:
+                    ok, payload = False, {"error": f"{type(exc).__name__}: {exc}"}
+                answer.tool_calls.append(
+                    ToolCallRecord(
+                        call.name, args, ok, _summarize(payload), (time.perf_counter() - t0) * 1000
+                    )
+                )
+                responses.append(types.Part.from_function_response(name=call.name, response=payload))
+            contents.append(types.Content(role="user", parts=responses))
+        else:
+            answer.error = "max_turns_exceeded"
+            answer.answer = (
+                "I hit the tool-call limit while investigating this and stopped rather than "
+                "guessing at an answer. Try asking about one specific order or settlement."
+            )
+
+        answer.duration_ms = (time.perf_counter() - started) * 1000
+        return answer
