@@ -1,7 +1,0 @@
-# Generated artefacts — regenerate with make-narration.ps1, capture.mjs, mux.mjs
-node_modules/
-audio/
-video/
-frames/
-narration.wav
-*.mp4
